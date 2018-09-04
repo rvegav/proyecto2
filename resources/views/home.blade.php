@@ -69,7 +69,7 @@
     $.ajax({
       url: "/",
       success: function(){
-        window.location.replace("{{ route('users.create') }}");
+        window.location.replace("{{ route('userRole') }}");
       }
     })
   });

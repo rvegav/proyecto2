@@ -9,12 +9,14 @@ class PagesController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('auth', ['only' => ['home']]);
+		$this->middleware('auth');
 	}
 
     public function home()
     {
     	return view('home');
     }
-
+    function loadViewAdminister(){
+    	return view('AdminUsers');
+    }
 }
