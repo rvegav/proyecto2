@@ -2,8 +2,13 @@
 
 @section('contenido')
 
-	<a href="{{ route('users.create') }}"><button class="btn btn-success col-md-s col-md-offset-3">Administrar Usuarios</button></a>
-	{{-- <a href="{{ route('') }}"><button class="btn btn-success">Administrar Roles</button></a> --}}
+  {{-- @if (auth()->user()->hasRoles('admin')) --}}
+    <a href="{{ route('users.create') }}"><button class="btn btn-success col-md-s col-md-offset-3">Administrar Usuarios</button></a>
+    <a href="{{ route('roles.create') }}"><button class="btn btn-success">Administrar Roles</button></a>
+
+  {{-- @endif --}}
+
+  {{-- <a href="{{ route('roles.create') }}"> --}}<button class="btn btn-success">Almacen</button></a>
 {{-- 
 <div class="container">
   <div class="panel panel-default">

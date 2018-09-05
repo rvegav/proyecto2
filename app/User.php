@@ -27,4 +27,33 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'assigned_roles'); //nombre de la tabla pivot
+    }
+
+    public function hasRoles(array $roles)
+    {
+        foreach ($roles as $role) 
+        {
+            foreach ($this->roles as $userRole) 
+            {
+                if ($userRole->role === $role) //no se
+                {
+                    return true;
+                }
+            }   
+
+        }
+            return false;
+    }
 }
+
+
+
+
+
+
+
+

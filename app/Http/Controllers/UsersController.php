@@ -8,10 +8,13 @@ use Illuminate\Http\Request;
 
 class UsersController extends Controller
 { 
-    // function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    function __construct()
+    {
+        //el primer middleware es para que solo se pueda ingresar a la vista de users si esta autenticado
+        // el segundo es para que solo el rol admin tenga acceso a Administrar Usuario
+        // $this->middleware(['auth', 'roles:admin']); 
+        $this->middleware('auth');
+    }
 
 
     /**

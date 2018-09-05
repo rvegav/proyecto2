@@ -40,12 +40,9 @@
         <div class="col-md-3">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Rol</label>
-            <?php $c=0 ?>
-     {{--        <select class="form-control" id="exampleFormControlSelect1">
-              
-              
-            </select> --}}
             <input type="text" name="idrole" class="form-control" value="" placeholder="Rol">
+            {{-- foreach $user->roles as $role
+            {{$role->role}} --}}
           </div>
         </div>
         <div class="row">
@@ -55,7 +52,6 @@
           <div class="col-md-3 col-md-offset-3">
             <input type="submit" class="btn btn-primary" value="Guardar">
             <button type="button" class="btn btn-primary" name="button">Cancelar</button>
-            {{-- <a href="{{ route('home') }}"><button type="button" class="btn btn-primary" name="button">Volver</button></a> --}}
           </div>
         </div>
         <hr>
