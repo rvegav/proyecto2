@@ -49,11 +49,10 @@
           <br>
         </div>
         <div class="row">
-          <div class="col-md-3 col-md-offset-3">
+          <div class="col-md-5 col-md-offset-4">
             <input type="submit" class="btn btn-primary" value="Guardar">
             <button type="button" class="btn btn-primary" name="button">Cancelar</button>
             <button type="button" class="btn btn-primary" id="volver" name="button">Volver</button>
-            {{-- <a href="{{ route('home') }}"><button type="button" class="btn btn-primary" name="button">Volver</button></a> --}}
           </div>
         </div>
         <hr>

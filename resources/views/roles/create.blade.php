@@ -57,7 +57,7 @@
               <input type="checkbox" name="vehicle3" value="Boat">Editar Documento<br>
               <input type="checkbox" name="vehicle2" value="Car">Eliminar Documento<br>
             </div>
-            <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#almacen" data-parent="#accordion">Almancen</button>
+            <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#almacen" data-parent="#accordion">Almacén</button>
             <div id="almacen" class=" panel-collapse collapse">
               <input type="checkbox" name="vehicle1" value="Bike">Realizar Pedido<br>
               <input type="checkbox" name="vehicle3" value="Boat">Controlar el Stock<br>
@@ -113,20 +113,32 @@
             <tr>
                 <th>ID</th>
                 <th>Rol</th>
-                <th>Descripcion</th>
-                <th>Fecha de Creacion</th>
-                <th>Fecha de Actualizacion</th>
+                <th>Descripción</th>
+                <th>Fecha de Creación</th>
+                <th>Fecha de Actualización</th>
                 <th>Estado</th>
                 <th>Acción</th>
             </tr>
         </thead> 
         <tbody>
-          <tr>
-            <td>asd</td>
-            <td>asd</td>
-            <td>asd</td>
-            <td>asd</td>
+          @foreach($roles as $role)
+            <tr>
+              <td>{{ $role->id }}</td>
+              <td>{{ $role->role_name }}</td>
+              <td>{{ $role->role_description }}</td>
+              <td>{{ $role->created_at }}</td>
+              <td>{{ $role->updated_at }}</td>
+              <td>--</td>
+              <td>
+                <a href="{{ route('roles.edit', $role->id) }}">Editar</a>
+                <form style="display: inline" method="POST" action="{{ route('roles.destroy', $role->id) }}">
+                  {!! csrf_field() !!}
+                  {!! method_field('DELETE') !!}
+                  <button type="submit">Eliminar</button>
+                </form>
+              </td>
           </tr>
+          @endforeach
         </tbody>     
 
         </table>

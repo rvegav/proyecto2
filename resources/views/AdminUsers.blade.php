@@ -58,7 +58,7 @@
     $.ajax({
       url: "{{url()->current()}}",
       success: function(){
-        window.location.replace("{{ route('roles.index') }}");
+        window.location.replace("{{ route('roles.create') }}");
       }
     })
   });

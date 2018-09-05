@@ -2,7 +2,7 @@
 
 //Rutas
 Route::get('home', 'PagesController@home');
-Route::get('usersRole', ['as'=> 'userRole', 'uses' => 'PagesController@loadViewAdminister']);
+Route::get('usersRole', ['as'=> 'userRole', 'uses' => 'PagesController@loadAdministrationView']);
 
 //Login y Logout
 Route::get('/', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);

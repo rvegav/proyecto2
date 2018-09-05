@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use App\Http\Requests\CreateMessageRequest;
 
 class PagesController extends Controller
 {
@@ -17,7 +16,7 @@ class PagesController extends Controller
     	return view('home');
     }
 
-    function loadViewAdminister()
+    function loadAdministrationView()
     {
     	return view('AdminUsers');
     }
