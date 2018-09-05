@@ -52,6 +52,8 @@
           <div class="col-md-3 col-md-offset-3">
             <input type="submit" class="btn btn-primary" value="Guardar">
             <button type="button" class="btn btn-primary" name="button">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="volver" name="button">Volver</button>
+            {{-- <a href="{{ route('home') }}"><button type="button" class="btn btn-primary" name="button">Volver</button></a> --}}
           </div>
         </div>
         <hr>
@@ -98,5 +100,14 @@
   </div>
 </div>
 </div>
-
+<script type="text/javascript">
+  $("#volver").click(function(){
+    $.ajax({
+      url: "{{url()->current()}}",
+      success: function(){
+        window.location.replace("{{url()->previous()}}");
+      }
+    })
+  })
+</script>
 @stop

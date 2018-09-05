@@ -2,14 +2,20 @@
 
 @section('contenido')
 
-  {{-- @if (auth()->user()->hasRoles('admin')) --}}
+
+{{--   @if (auth()->user()->hasRoles('admin'))
     <a href="{{ route('users.create') }}"><button class="btn btn-success col-md-s col-md-offset-3">Administrar Usuarios</button></a>
     <a href="{{ route('roles.create') }}"><button class="btn btn-success">Administrar Roles</button></a>
 
-  {{-- @endif --}}
+  @endif
 
-  {{-- <a href="{{ route('roles.create') }}"> --}}<button class="btn btn-success">Almacen</button></a>
-{{-- 
+  <a href="{{ route('roles.create') }}"><button class="btn btn-success">Almacen</button></a>
+
+
+<a href="{{ route('users.create') }}"><button class="btn btn-success col-md-s col-md-offset-3">Administrar Usuarios</button></a>
+	 <a href="{{ route('') }}"><button class="btn btn-success">Administrar Roles</button></a>  --}}
+
+
 <div class="container">
   <div class="panel panel-default">
     <div class="panel-body">
@@ -74,15 +80,18 @@
     $.ajax({
       url: "/",
       success: function(){
-        window.location.replace("{{url('usuarios')}}");
+        window.location.replace("{{ route('userRole') }}");
       }
     })
-  })
+  });
+ $( ".card" ).hover(
+  function() {
+    $( this ).append( $( "<span> ***</span>" ) );
+  }, function() {
+    $( this ).find( "span:last" ).remove();
+  }
+);
 </script>
-
-
- --}}
-
 
 @stop
 

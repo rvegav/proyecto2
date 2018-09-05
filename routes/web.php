@@ -2,6 +2,7 @@
 
 //Rutas
 Route::get('home', 'PagesController@home');
+Route::get('usersRole', ['as'=> 'userRole', 'uses' => 'PagesController@loadViewAdminister']);
 
 //Login y Logout
 Route::get('/', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
@@ -13,6 +14,12 @@ Route::resource('users', 'UsersController');
 
 //REST Roles
 Route::resource('roles', 'RolesController');
+
+
+//obras mientras
+Route::get('obras', function(){
+	return view('works.obras');
+});
 
 
 
