@@ -18,10 +18,7 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        //
-        $empleados = Empleado::all();
-
-        return view('empleados.create', compact('empleados'));
+        //este método ya se realiza en create, ya no es necesario implementar
     }
 
     /**
@@ -43,10 +40,9 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //return "LLego al store";
-        //dd($request->all());
         Empleado::create($request->all());
-        return redirect()->route('empleados.index');
+        // return redirect()->route('empleados.index'); empleados.index ya es redundante con empleados.create 
+        return redirect()->route('empleados.create'); 
     }
 
     /**
@@ -87,7 +83,8 @@ class EmpleadosController extends Controller
         
         $empleado = Empleado::findOrFail($id);
         $empleado->update($request->all());
-        return redirect()->route('empleados.index');
+        // return redirect()->route('empleados.index'); //la misma cosa, se retorna empleados.create
+        return redirect()->route('empleados.create');
     }
 
     /**
@@ -98,7 +95,7 @@ class EmpleadosController extends Controller
      */
     public function destroy($id)
     {
-        //return "Eliminar el empleado id: " .$id;
+        //no se elimina de la bd, "se elimina" cambiando el estado nomas y se muestran solo los empleados activos o el estado equivalente y los que están de baja no se muestran
         
         $empleado = Empleado::findOrFail($id);
         //dd($empleado);
