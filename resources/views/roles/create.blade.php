@@ -49,8 +49,11 @@
         </div>
         <hr>
         <div class="row">
-          <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#obras" data-parent="#accordion">Obras</button>
-          <div id="obras" class="collapse">
+          <div class="col-md-1">
+            <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#obras" data-parent="#accordion">Obras</button>
+          </div>
+          <div class="col-md-1">
+            <div id="obras" class="collapse">
             <button type="button" class="btn btn-success" data-toggle="collapse" data-target="#doc">Documentos</button>
             <div id="doc" class="panel-collapse collapse">
               <input type="checkbox" name="vehicle1" value="Bike">Agregar Documento<br>
@@ -71,6 +74,8 @@
             </div>
             
           </div>
+          </div>
+          
         </div>
         <div class="row">
           <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#seguridad">Seguridad</button>

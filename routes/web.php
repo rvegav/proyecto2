@@ -1,7 +1,7 @@
 <?php
 
 //Rutas
-Route::get('home', 'PagesController@home');
+Route::get('home', ['as' => 'home', 'uses'=>'PagesController@home']);
 Route::get('usersRole', ['as'=> 'userRole', 'uses' => 'PagesController@loadAdministrationView']);
 
 //Login y Logout
