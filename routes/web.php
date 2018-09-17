@@ -17,8 +17,8 @@ Route::resource('roles', 'RolesController');
 
 
 //obras mientras
-Route::get('obras', function(){
-	return view('works.obras');
+Route::get('documentos', function(){
+	return view('documentos.create');
 });
 
 

@@ -17,14 +17,16 @@ class CheckRoles
     {
         $roles = func_get_args();
         $roles = array_slice($roles, 2);
-
        //si tiene alguno de estos roles, lo dejamos pasar
-        if (auth()->user()->hasRoles($roles)) 
-        {
+        // if (auth()->user()->hasRoles($roles)) 
+        // {
+        //     return $next($request);
+        // }
+        if (auth()->user()->hasPermits($roles)){
             return $next($request);
-        }
-
-        return redirect('/'); //si no, lo redireccionamos al home
+        }    
+        return redirect('home'); //si no, lo redireccionamos al home
 
     }
+
 }

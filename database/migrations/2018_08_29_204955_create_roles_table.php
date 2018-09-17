@@ -18,8 +18,9 @@ class CreateRolesTable extends Migration
             $table->string('role')->unique(); //nombre identificador del rol por ej admin
             $table->string('role_name')->nullable();//nombre del rol por ej Administrador
             $table->text('role_description')->nullable();//decripcion de las tareas del rol
+            $table->string('role_permits');
             $table->timestamps();
-        });
+            });
     }
 
     /**

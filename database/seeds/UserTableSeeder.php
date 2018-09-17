@@ -15,7 +15,7 @@ class UserTableSeeder extends Seeder
     	//User::truncate();
        	User::create(array(
             'username'  => 'admin',
-            'email'     => 'admin@admin.com',
+            'email'     =>  'admin@admin.com',
             'name'=> 'Joel Filartiga',
             'password' => Hash::make('admin'), // Hash::make() nos va generar una cadena con nuestra contraseña encriptada
             'role_id'=> 1
