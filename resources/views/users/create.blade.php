@@ -58,7 +58,7 @@
         <hr>
   </form>
 
-     <table class="table table-responsive">
+    m <table class="table table-responsive">
     <thead>
       <tr>
           <th>Empleado</th>
