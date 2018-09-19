@@ -78,7 +78,7 @@
           <td>{{ $user->name }}</td>
           <td>{{ $user->username }}</td>
           <td>{{ $user->created_at }}</td>
-          <td>--</td>
+          <td>{{ $user->role->role_name}}</td>
           <td>{{ $user->estado }}</td>
           <td>
             <a href="{{ route('users.edit', $user->id) }}">Editar</a>

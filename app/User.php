@@ -28,26 +28,40 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function roles()
-    {
-        return $this->belongsToMany(Role::class, 'assigned_roles'); //nombre de la tabla pivot
+    // public function roles()
+    // {
+    //     return $this->belongsToMany(Role::class, 'assigned_roles'); //nombre de la tabla pivot
+    // }
+    public function role(){
+        return $this->belongsTo(Role::Class);
     }
 
-    public function hasRoles(array $roles)
-    {
-        foreach ($roles as $role) 
-        {
-            foreach ($this->roles as $userRole) 
-            {
-                if ($userRole->role === $role) //no se
-                {
-                    return true;
-                }
-            }   
+    // public function hasRoles(array $roles)
+    // {
+    //     foreach ($roles as $role) 
+    //     {
+    //         foreach ($this->roles as $userRole) 
+    //         {
+    //             if ($userRole->role === $role) //no se
+    //             {
+    //                 return true;
+    //             }
+    //         }   
 
+    //     }
+    //         return false;
+    // }
+    public function hasPermits(array $permisos){
+        // dd($this->role->role_permits);
+        $permitsUser = explode(',' , $this->role->role_permits);
+        foreach ($permisos as $permiso ) {
+            if (in_array($permiso, $permitsUser)) {
+                  return true;
+            }  
         }
-            return false;
+        return false;
     }
+
 }
 
 
