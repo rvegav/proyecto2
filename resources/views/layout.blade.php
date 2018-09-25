@@ -35,11 +35,11 @@
     	color: #5a5959;
     }
 
-    button-primary
+    .button-primary
     {
     	color: #5a5959;
-    	background-color: #d9d9d9; 
-    	border-color: "#d9d9d9";
+    	background-color: #cdcdcd; 
+    	border-color: "#cdcdcd";
     	/*font-weight:bold;*/
     }
 
