@@ -40,8 +40,9 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         Empleado::create($request->all());
-        // return redirect()->route('empleados.index'); empleados.index ya es redundante con empleados.create 
+
         return redirect()->route('empleados.create'); 
     }
 

@@ -53,17 +53,29 @@
           <br>
         </div>
         <div class="row">
-          <div class="col-md-3 col-md-offset-3">
-            <input type="submit" class="btn btn-primary" value="Guardar">
-            <button type="button" class="btn btn-primary" name="button">Cancelar</button>
+          <div class="col-md-5 col-md-offset-4">
+            <input type="submit" class="btn button-primary" value="Guardar">
+            <button type="button" class="btn button-primary" name="button">Cancelar</button>
+            <button type="button" class="btn button-primary" id="volver" name="button">Volver</button>
           </div>
         </div>
-        <hr>
+        <br>
 
 </form>
     </div>
   </div>
 </div>
 </div>
+
+<script type="text/javascript">
+  $("#volver").click(function(){
+    $.ajax({
+      url: "{{url()->current()}}",
+      success: function(){
+        window.location.replace("{{url()->previous()}}");
+      }
+    })
+  })
+</script>
 
 @stop

@@ -8,6 +8,7 @@ Route::get('usersRole', ['as'=> 'userRole', 'uses' => 'PagesController@loadAdmin
 Route::get('/', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
 Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout');
+Auth::routes();
 
 //REST Users
 Route::resource('users', 'UsersController');
@@ -21,9 +22,6 @@ Route::get('documentos', function(){
 	return view('documentos.create');
 });
 
-
-//Sebas Route's empleados
-//vi que ya creaste tu recurso Empleado.php, por lo tanto ya podés utilizar los servicios REST que se crean con el modelo. Para hacer más simplificado hacemos así nomas ya:
 //REST Empleados
 Route::resource('empleados', 'EmpleadosController');
 

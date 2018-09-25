@@ -8,7 +8,8 @@ class PagesController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware(['auth', 'roles:wor,sec,emp,sto,set']);
+		// $this->middleware(['auth', 'roles:wor,sec,emp,sto,set']);
+        $this->middleware('auth');
 	}
 
     public function home()

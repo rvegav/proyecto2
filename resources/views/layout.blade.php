@@ -7,7 +7,54 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-	
+  <style type="text/css">
+    h1 
+    { 
+    	color: #575757;
+    	text-align: center; 
+    } 
+
+    label 
+    { 
+    	color: #575757;
+    } 
+
+    .errors
+    {
+      color: #e00000;
+    }
+
+    th
+    {
+    	color: #575757;
+
+    }
+
+    td
+    {
+    	color: #5a5959;
+    }
+
+    button-primary
+    {
+    	color: #5a5959;
+    	background-color: #d9d9d9; 
+    	border-color: "#d9d9d9";
+    	/*font-weight:bold;*/
+    }
+
+    .button-primary:hover 
+    {
+    	background-color: darkgrey;
+	}
+
+	.btn-link 
+	{
+    	color: #575757;
+	}
+
+  </style>
+
 	<nav class="navbar navbar-default" role="navigation">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -35,8 +82,6 @@
 						<a href="/login"></a>
 					@endif
 					</ul>
-			</div>
-		</div>
 	</nav>
 	<br>
 
