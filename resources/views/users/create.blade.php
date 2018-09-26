@@ -13,10 +13,10 @@
       </div>
      
       <div class="panel-body">
-        <div class="col-md-2">
-          <label for="func">Nombre</label>
+        <div class="col-md-2 col-md-offset-1">
+          <label for="func">Empleado</label>
           <div class="input-group">
-            <input type="text" name="nombre" class="form-control" value="" placeholder="Nombre del empleado">
+            <input type="text" name="nombre" class="form-control" value="" placeholder="Nombre Empleado">
           </div>
         </div>
         <div class="col-md-2">
@@ -28,7 +28,7 @@
         <div class="col-md-2">
           <label for="func">Email</label>
           <div class="input-group">
-            <input type="email" name="email" class="form-control" value="" placeholder="Email">
+            <input type="email" name="email" class="form-control" value="" placeholder="Dirección de correo">
           </div>
         </div>
          <div class="col-md-2">
@@ -37,12 +37,15 @@
                 <input type="password" id="password" class="form-control" name="pass" value="" placeholder="Contraseña">
               </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Rol</label>
-            <input type="text" name="idrole" class="form-control" value="" placeholder="Rol">
-            {{-- foreach $user->roles as $role
-            {{$role->role}} --}}
+            <select class="form-control" id="idrole" name="idrole">
+                @foreach ($roles as $role) {       
+                  <option value={{ $role->id }}>{{ $role->role_name }}</option> 
+                @endforeach 
+}
+            </select>
           </div>
         </div>
         <div class="row">
@@ -78,8 +81,7 @@
           <td>{{ $user->name }}</td>
           <td>{{ $user->username }}</td>
           <td>{{ $user->created_at }}</td>
-          <td>--</td>
-          {{-- <td>{{ $user->role->role_name}}</td> --}}
+          <td>{{ $user->role->role_name }}</td>
           <td>{{ $user->estado }}</td>
           <td>
             <a class="btn btn-link" href="{{ route('users.edit', $user->id) }}">Editar</a>

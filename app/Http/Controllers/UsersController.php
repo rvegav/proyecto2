@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Role;
 
 
 use Illuminate\Http\Request;
@@ -34,10 +35,10 @@ class UsersController extends Controller
      */
     public function create()
     {
-
+        $roles = Role::all();
         $users = User::all();
-
-        return view('users.create', compact('users'));
+        // dd()
+        return view('users.create', compact('users', 'roles'));
         
     }
 
@@ -49,7 +50,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-       
+        // dd($request->all());
         // primero guardar
         $user = new User;
         $user->name = $request->input('nombre');
