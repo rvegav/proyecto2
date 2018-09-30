@@ -20,9 +20,9 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <div class="row">
-        <div class="col-md-6 col-md-offset-4">
-          <h2>BIENVENIDO AL SISTEMA</h2>
-        </div>
+          <div class="panel-heading">
+            <h1>BIENVENIDO</h1>
+          </div>
       </div>
       <hr>
       <div class="row">

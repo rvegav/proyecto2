@@ -13,10 +13,10 @@
       </div>
      
       <div class="panel-body">
-        <div class="col-md-2">
-          <label for="func">Nombre</label>
+        <div class="col-md-2 col-md-offset-1">
+          <label for="func">Empleado</label>
           <div class="input-group">
-            <input type="text" name="nombre" class="form-control" value="" placeholder="Nombre del empleado">
+            <input type="text" name="nombre" class="form-control" value="" placeholder="Nombre Empleado">
           </div>
         </div>
         <div class="col-md-2">
@@ -28,21 +28,24 @@
         <div class="col-md-2">
           <label for="func">Email</label>
           <div class="input-group">
-            <input type="email" name="email" class="form-control" value="" placeholder="Email">
+            <input type="email" name="email" class="form-control" value="" placeholder="Dirección de correo">
           </div>
         </div>
          <div class="col-md-2">
           <label for="password">Contraseña</label>
-                        <div class="input-group">
-                           <input type="password" id="password" class="form-control" name="pass" value="" placeholder="Contraseña">
-                        </div>
+              <div class="input-group">
+                <input type="password" id="password" class="form-control" name="pass" value="" placeholder="Contraseña">
+              </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
           <div class="form-group">
             <label for="exampleFormControlSelect1">Rol</label>
-            <input type="text" name="idrole" class="form-control" value="" placeholder="Rol">
-            {{-- foreach $user->roles as $role
-            {{$role->role}} --}}
+            <select class="form-control" id="idrole" name="idrole">
+                @foreach ($roles as $role) {       
+                  <option value={{ $role->id }}>{{ $role->role_name }}</option> 
+                @endforeach 
+}
+            </select>
           </div>
         </div>
         <div class="row">
@@ -50,15 +53,15 @@
         </div>
         <div class="row">
           <div class="col-md-5 col-md-offset-4">
-            <input type="submit" class="btn btn-primary" value="Guardar">
-            <button type="button" class="btn btn-primary" name="button">Cancelar</button>
-            <button type="button" class="btn btn-primary" id="volver" name="button">Volver</button>
+            <input class="btn button-primary" value="Guardar" type="submit">
+            <button type="button" class="btn button-primary" name="button">Cancelar</button>
+            <button type="button" class="btn button-primary" id="volver" name="button">Volver</button>
           </div>
         </div>
-        <hr>
+       <br>
   </form>
 
-     <table class="table table-responsive">
+    <table class="table table-responsive">
     <thead>
       <tr>
           <th>Empleado</th>
@@ -78,15 +81,15 @@
           <td>{{ $user->name }}</td>
           <td>{{ $user->username }}</td>
           <td>{{ $user->created_at }}</td>
-          <td>{{ $user->role->role_name}}</td>
+          <td>{{ $user->role->role_name }}</td>
           <td>{{ $user->estado }}</td>
           <td>
-            <a href="{{ route('users.edit', $user->id) }}">Editar</a>
+            <a class="btn btn-link" href="{{ route('users.edit', $user->id) }}">Editar</a>
 
             <form style="display: inline" method="POST" action="{{ route('users.destroy', $user->id) }}">
                   {!! csrf_field() !!}
                   {!! method_field('DELETE') !!}
-              <button type="submit">Eliminar</button>
+              <button type="submit" class="btn button-primary">Eliminar</button>
             </form>
           </td>
         </tr>
