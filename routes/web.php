@@ -27,6 +27,9 @@ Route::get('documentos', function(){
 //REST Empleados
 Route::resource('empleados', 'EmpleadosController');
 
+Route::resource('rubros', 'RubrosController');
+
+
 
 // Route::get('/herramientas/create', ['as' => 'herramientas.create', 'uses' => 'HerramientasController@create']);
 
