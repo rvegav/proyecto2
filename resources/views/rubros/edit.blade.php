@@ -27,14 +27,11 @@
             <input type="text" name="detalle_rubro" class="form-control" value="{{ $rubros->detalle_rubro }}" placeholder="Detalle del rubro">
           </div>
         </div>
-          <div class="col-md-2">
-          <div class="row">
-            <br><br><br><br>
-          </div>
-          <div class="row">
-            <div class="col-md-3 col-md-offset-3">
-              <input type="submit" class="btn btn-primary" value="Guardar">
-              <a href="{{route('rubros.create')}}" class="btn btn-primary">Cancelar</a>
+           <div class="row">
+            <div class="col-md-5 col-md-offset-4">
+              <button type="submit" class="btn button-primary">Guardar</button>
+              <a class="btn button-primary" href="{{ route('rubros.edit', $rubros->id) }}">Cancelar</a>
+              <a class="btn button-primary" href="{{ route('rubros.create') }}">Volver</a>
             </div>
           </div>
         <hr>

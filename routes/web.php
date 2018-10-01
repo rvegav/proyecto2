@@ -27,6 +27,9 @@ Route::resource('empleados', 'EmpleadosController');
 
 Route::resource('rubros', 'RubrosController');
 
+Route::resource('materiales', 'MaterialesController');
+
+
 
 
 // Route::get('/herramientas/create', ['as' => 'herramientas.create', 'uses' => 'HerramientasController@create']);
