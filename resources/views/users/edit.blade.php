@@ -44,8 +44,6 @@
             <label for="exampleFormControlSelect1">Rol</label>
             <?php $c=0 ?>
             <select class="form-control" id="exampleFormControlSelect1">
-              
-              
             </select>
           </div>
         </div>

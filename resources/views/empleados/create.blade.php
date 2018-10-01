@@ -54,16 +54,14 @@
               </div>
 
               <div class="col-md-2">
-                <div class="form-group">
                   <label for="sel1" style="margin-top: 10px">Rubro</label>
-                  {{-- <select class="form-control" id="rubro" name="rubro">
-                    <option>Pintor</option>
-                    <option>Electricista</option>
-                    <option>Plomero</option>
-                    <option>Carpintero</option>
-                    <option>Albañil</option>
-                  </select> --}}
-                  <input type="text" name="rubro" class="form-control" value="" placeholder="Rubro">
+                <div class="form-group">
+                  <select class="form-control" id="rubro_id" name="rubro_id">
+                      @foreach ($rubros as $rubro) {
+                         <option value={{$rubro->id}}>{{$rubro->nombre_rubro}}</option> 
+                      }
+                      @endforeach
+                  </select>
                 </div>
               </div>
 
@@ -74,8 +72,8 @@
               <div class="row">
                 <div class="col-md-4 col-md-offset-4" style="margin-top: 10px">
                   <button type="submit" class="btn button-primary">Guardar</button>
-                  <button type="button" class="btn button-primary">Cancelar</button>
-                  <button type="button" class="btn button-primary" id="volver">Volver</button>
+                  <a class="btn button-primary" href="{{ route('empleados.create') }}">Cancelar</a>
+                  <a class="btn button-primary" href="{{ route('home') }}">Volver</a>
                 </div>
               </div>
 
@@ -85,8 +83,12 @@
     <table class="table table-responsive">
     <thead>
       <tr>
-        <th>Nombre</th>
-        <th>Apellido</th>
+        {{-- <th>Primer Nombre</th>
+        <th>Segundo Nombre</th>
+        <th>Primer Apellido</th>
+        <th>Segundo Apellido</th> --}}
+        <th>Nombres</th>
+        <th>Apellidos</th>
         <th>Dirección</th>
         <th>Teléfono</th>
         <th>Rubro</th>
@@ -96,23 +98,24 @@
 
       <tbody>
         @foreach($empleados as $empleado)
-          <tr>
-            <td>{{ $empleado->primerNombre }}</td>
-            <td>{{ $empleado->primerApellido }}</td>
-            <td>{{ $empleado->direccion }}</td>
-            <td>{{ $empleado->telefono }}</td>
-            <td>--</td>
-            {{-- <td>{{ $empleado->rubro }}</td> --}}
-            <td>
-              <a class="btn btn-link" href="{{ route('empleados.edit', $empleado->id) }}">Editar</a>
+          @if($empleado->estado == 1)
+            <tr>
+              <td>{{ $empleado->primerNombre .' '.$empleado->segundoNombre }}</td>
+              <td>{{ $empleado->primerApellido .' '.$empleado->segundoApellido }}</td>
+              <td>{{ $empleado->direccion }}</td>
+              <td>{{ $empleado->telefono }}</td>
+              <td>{{ $empleado->rubro->nombre_rubro }}</td>
+              <td>
+                <a class="btn btn-link" href="{{ route('empleados.edit', $empleado->id) }}">Editar</a>
 
-              <form style="display: inline" method="POST" action="{{ route('empleados.destroy', $empleado->id) }}">
-                    {!! csrf_field() !!}
-                    {!! method_field('DELETE') !!}
-                    <button type="submit" class="btn button-primary">Eliminar</button>
-                  </form>
-            </td>
-          </tr>
+                <form style="display: inline" method="POST" action="{{ route('empleados.destroy', $empleado->id) }}">
+                      {!! csrf_field() !!}
+                      {!! method_field('DELETE') !!}
+                      <button type="submit" class="btn button-primary">Eliminar</button>
+                    </form>
+              </td>
+            </tr>
+          @endif
           @endforeach
     </tbody>
   </table>

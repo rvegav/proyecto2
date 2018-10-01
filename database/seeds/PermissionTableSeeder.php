@@ -12,6 +12,18 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $permission = new Permission;
+        $permission->permission_name = 'obras';
+        $permission->permission_description = 'Obras de la contructora';
+        $permission->id_padre = null;
+        $permission->save();
+
+        $permission = new Permission;
+        $permission->permission_name = '';
+        $permission->permission_description = 'Obras de la contructora';
+        $permission->id_padre = null;
+        $permission->save();
+
+        $permission = new Permission;
         $permission->permission_name = 'desvEmpl';
         $permission->permission_description = 'desvinculacion empleados';
         $permission->id_padre = '4';

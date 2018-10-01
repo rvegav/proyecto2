@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Empleado;
+use App\Rubro;
 
 class EmpleadosController extends Controller
 {
@@ -29,7 +30,8 @@ class EmpleadosController extends Controller
     public function create()
     {
         $empleados = Empleado::all();
-        return view('empleados.create', compact('empleados'));
+        $rubros = Rubro::all();
+        return view('empleados.create', compact('empleados'), compact('rubros'));
     }
 
     /**
@@ -40,7 +42,7 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
+        //dd($request->all());
         Empleado::create($request->all());
 
         return redirect()->route('empleados.create'); 
@@ -67,7 +69,8 @@ class EmpleadosController extends Controller
     public function edit($id)
     {
         $empleado = Empleado::findOrFail($id);
-        return view('empleados.edit', compact('empleado'));
+        $rubros = Rubro::all();
+        return view('empleados.edit', compact('empleado'), compact('rubros'));
     }
 
     /**
