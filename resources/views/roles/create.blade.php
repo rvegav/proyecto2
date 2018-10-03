@@ -48,49 +48,19 @@
           </div>
         </div>
         <hr>
-        @foreach($permissions as $permission)
-          @if($permission->id_padre=="")
-          <div class="row">
-            <div class="col-md-3">
-                <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#{{$permission->permission_name}}" data-parent="#accordion">{{$permission->permission_description}}</button>
-            </div>
-            @foreach($permissions as $hijo)
-              @if($hijo->id_padre==$permission->id)
-                <div class="col-md-3">
-                  <div id="#{{$permission->permission_name}}" class="collapse">
-                  <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#{{$hijo->permission_name}}">{{$hijo->permission_description}}</button>
-                  
-                  </div>
-                </div>    
-              @endif
-            @endforeach
-          </div>
-          @endif
-            
-        @endforeach
+        {{-- <div>
+          {!!$permissions !!}
+          
+
+        </div>
+         --}}
         <div class="row">
+    
           <div class="col-md-3">
-            {{-- @foreach($permissions as $permission)
-              @if($permission->id_padre =="")
-                <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#obras" data-parent="#accordion">{{$padre->permission_description}}</button>
-              @endif
-            @endforeach
-          </div>
-          <div class="col-md-3">
-            <div id="obras" class="collapse">
-              @foreach($permissions as $permission)
-                @if($permission->id_padre=="")
-                @endif
-                @if($hi)
-                @endif
-              @endforeach
-            </div>
-          </div> --}}
-          {{-- <div class="col-md-3">
             <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#obras" data-parent="#accordion">Obras</button>
           </div>
           <div class="col-md-3">
-            <div id="obras" class="collapse">
+            <div id="obras" class="panel-collapse collapse">
               <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#doc">Documentos</button>
               <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#almacen" data-parent="#accordion">Almacén</button>
               <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#empleado" data-parent="#accordion">Empleados</button>
@@ -98,10 +68,10 @@
           </div>
           <div class="col-md-3">
             <div id="doc" class="panel-collapse collapse">
-              <input type="checkbox" name="per[]" value="{{$permisos->id}}" >Agregar Documento<br>
+              <input type="checkbox" name="per[]" value="addDoc" >Agregar Documento<br>
               <input type="checkbox" name="per[]" value="ediDoc">Editar Documento<br>
               <input type="checkbox" name="per[]" value="delDoc">Eliminar Documento<br>
-            </div>
+            </div>  
             <br>
             <div id="almacen" class=" panel-collapse collapse">
               <input type="checkbox" name="per[]" value="addPed">Realizar Pedido<br>
@@ -110,47 +80,47 @@
             </div>
             <br>
             <div id="empleado" class="panel-collapse collapse">
-              <input type="checkbox" name="vehicle1" value="Bike">Asignar Empleado<br>
-              <input type="checkbox" name="vehicle3" value="Boat">Desvincular Empleado<br>
-              <input type="checkbox" name="vehicle2" value="Car">a determinar<br>
+              <input type="checkbox" name="per[]" value="asigEmpl">Asignar Empleado<br>
+              <input type="checkbox" name="per[]" value="desvEml">Desvincular Empleado<br>
+              <input type="checkbox" name="per[]" value="AD">a determinar<br>
             </div>
-          </div> --}}
+          </div>
         </div>
         
         <div class="row">
-          {{-- <div class="col-md-3">
+          <div class="col-md-3">
             <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#mant" data-parent="#accordion">Mantenimiento</button>
           </div>
           <div class="col-md-3">
             <div id="mant" class="collapse">
               <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#empl" data-parent="#accordion">Empleados</button>
               <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#rubro" data-parent="#accordion">Rubros</button>
-              <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#mat" data-parent="#accordion">Materiales</button>   
+              <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#mate" data-parent="#accordion">Materiales</button>   
             </div>
           </div>
           <div class="col-md-3">
             <div id="empl" class="collapse">
-              <input type="checkbox" name="vehicle1" value="Bike">Agregar Empleados<br>
-              <input type="checkbox" name="vehicle3" value="Boat">Editar Empleados<br>
-              <input type="checkbox" name="vehicle2" value="Car">Eliminar Empleados<br>
+              <input type="checkbox" name="per[]" value="addEmpl">Agregar Empleados<br>
+              <input type="checkbox" name="per[]" value="ediEmpl">Editar Empleados<br>
+              <input type="checkbox" name="per[]" value="delEmpl">Eliminar Empleados<br>
             </div>
             <br>
             <div id="rubro" class="collapse">
-              <input type="checkbox" name="vehicle1" value="Bike">Agregar Rubros<br>
-              <input type="checkbox" name="vehicle3" value="Boat">Editar Rubros<br>
-              <input type="checkbox" name="vehicle2" value="Car">Eliminar Rubros<br>    
+              <input type="checkbox" name="per[]" value="addRub">Agregar Rubros<br>
+              <input type="checkbox" name="per[]" value="ediRub">Editar Rubros<br>
+              <input type="checkbox" name="per[]" value="delRub">Eliminar Rubros<br>    
             </div>
             <br> 
-            <div id="mat" class="collapse">
-              <input type="checkbox" name="vehicle1" value="Bike">Agregar Materiales<br>
-              <input type="checkbox" name="vehicle3" value="Boat">Editar Materiales<br>
-              <input type="checkbox" name="vehicle2" value="Car">Eliminar Materiales<br>
+            <div id="mate" class="collapse">
+              <input type="checkbox" name="per[]" value="addMate">Agregar Materiales<br>
+              <input type="checkbox" name="per[]" value="eduMate">Editar Materiales<br>
+              <input type="checkbox" name="per[]" value="delMate">Eliminar Materiales<br>
             </div>
           </div>
-           --}}
+          
         </div>
         <div class="row">
-          {{-- <div class="col-md-3">
+          <div class="col-md-3">
             <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#seguridad" data-parent="#accordion">Seguridad</button>
           </div>
           <div class="col-md-3">
@@ -161,17 +131,17 @@
           </div>
           <div class="col-md-3">
             <div id="usuario" class="collapse">
-              <input type="checkbox" name="vehicle1" value="Bike">Agregar Usuario<br>
-              <input type="checkbox" name="vehicle3" value="Boat">Editar Usuario<br>
-              <input type="checkbox" name="vehicle2" value="Car">Eliminar Usuario<br>
+              <input type="checkbox" name="per[]" value="addUse">Agregar Usuario<br>
+              <input type="checkbox" name="per[]" value="ediUse">Editar Usuario<br>
+              <input type="checkbox" name="per[]" value="delUse">Eliminar Usuario<br>
             </div>
             <br>
             <div id="roles" class="collapse">
-              <input type="checkbox" name="vehicle1" value="Bike">Agregar Rol<br>
-              <input type="checkbox" name="vehicle3" value="Boat">Editar Rol<br>
-              <input type="checkbox" name="vehicle2" value="Car">Eliminar Rol<br>
+              <input type="checkbox" name="per[]" value="addRol">Agregar Rol<br>
+              <input type="checkbox" name="per[]" value="ediRol">Editar Rol<br>
+              <input type="checkbox" name="per[]" value="delRol">Eliminar Rol<br>
             </div> 
-          </div> --}}
+          </div>
         </div>
         </form>
         <table class="table table-responsive">

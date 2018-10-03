@@ -4,13 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class DocumentosController extends Controller
+class ObrasController extends Controller
 {
-    function __construct()
-    {
-        $this->middleware('auth');
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -28,7 +23,7 @@ class DocumentosController extends Controller
      */
     public function create()
     {
-        return view('documentos.create');
+        return view('obras.create');
     }
 
     /**
@@ -39,18 +34,7 @@ class DocumentosController extends Controller
      */
     public function store(Request $request)
     {
-      /*  $nombre = $request->input('nombre');
-        $marca = $request->input('marca');
-        $fecha = $request->input('fecha');
-        $cantidad = $request->input('cantidad');
-        $estado = $request->input('estado');
-        $ubicacion = $request->input('ubicacion');
-
-        DB::table('herramientas')->insert([
-            ['nombre_herramienta' =]
-
-
-        ]);*/
+        return "op";
     }
 
     /**

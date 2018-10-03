@@ -16,20 +16,22 @@ Route::resource('users', 'UsersController');
 //REST Roles
 Route::resource('roles', 'RolesController');
 
-
-//obras mientras
-Route::get('documentos', function(){
-	return view('documentos.create');
-});
-
 //REST Empleados
 Route::resource('empleados', 'EmpleadosController');
+
+
+//REST Documents
+Route::resource('documents', 'DocumentsController');
+
+//REST Obras
+Route::resource('obras', 'ObrasController');
 
 Route::resource('rubros', 'RubrosController');
 
 Route::resource('materiales', 'MaterialesController');
 
 Route::resource('maquinarias', 'MaquinariasController');
+
 
 
 

@@ -19,9 +19,9 @@ m_estado--}}
           </div>
           <div class="panel-body">
               <div class="col-md-3">
-                    <label for="">Descipción del Material</label>
+                    <label for="">Material</label>
                     <div class="form-group">
-                        <input type="text" size="19"  class="form-control" value="" name="m_descripcion" placeholder="Descipción del Material">
+                        <input type="text" size="19"  class="form-control" value="" name="m_descripcion" placeholder="Descripción del Material">
                     </div>
                   </div>
 
@@ -35,13 +35,13 @@ m_estado--}}
               <div class="col-md-2">
                 <label for="" >Costo</label>
                 <div class="form-group">
-                  <input type="text" size="19" class="form-control" name="m_costo" value="" placeholder="Costo">
+                  <input type="text" size="19" class="form-control" name="m_costo" value="" placeholder="Costo Unitario">
                 </div>
               </div>
               <div class="col-md-3">
                 <label for="" >Cantidad Mínima Requerida</label>
                 <div class="form-group">
-                  <input type="text" size="19" class="form-control" name="m_min_stock" value="" placeholder="Cantidad Minima">
+                  <input type="text" size="19" class="form-control" name="m_min_stock" value="" placeholder="Cantidad Mínima">
                 </div>
               </div>
 
@@ -63,16 +63,15 @@ m_estado--}}
                   <a class="btn button-primary" href="{{ route('home') }}">Volver</a>
                 </div>
               </div>
-
               <br>
 </form>
 
     <table class="table table-responsive">
     <thead>
       <tr>
-        <th>Descripcíon</th>
+        <th>Material</th>
         <th>Costo</th>
-        <th>Cantidad Minima Requerida</th>
+        <th>Cantidad Mínima Requerida</th>
         <th>Cantidad Actual</th>
         <th>Unidad de medida</th>
         <th>Acción</th>

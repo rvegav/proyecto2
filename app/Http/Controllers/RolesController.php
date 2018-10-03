@@ -19,10 +19,7 @@ class RolesController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        //
-    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -33,8 +30,14 @@ class RolesController extends Controller
     {
         $roles = Role::all();
         $permissions = Permission::all();
+        // return view('roles.create', compact('roles', 'permissions'));
+        // $permissions = $this->nested($permissions);
+        // dd($permissions);
+        
         return view('roles.create', compact('roles', 'permissions'));
     }
+
+  
 
     /**
      * Store a newly created resource in storage.
@@ -44,21 +47,65 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
+        $permissions = Permission::all();
         $permisos = $request->input('per');
+        // dd($permisos);
         $role = new Role;
         $role->role = $request->input('rol');
         $role->role_name = $request->input('nombre_rol');
         $role->role_description = $request->input('desc');
-        $role_permits = "";
+        $permissions_request = $request->input('per');
+        $role_permission = "";
+        $padres = array();
         $sw=1;
-        foreach ($permissions as $permission) {
+        foreach ($permissions_request as $permission) {
+            $padres[]=$this->nested($permissions, $permission);
+            $permission = $this->getPermissionsId($permission);
             $role_permission.= $permission.',';
         }
-        $role->role_permits = $role_permits;
-        dd($role_permits);
+        $padres = array_unique($padres);
+        foreach ($padres as $padre) {
+            $role_permission.= $padre.',';
+        }
+        $role->role_permission = $role_permission;
         $role->save();
+        return redirect()->route('roles.create');
     }
-
+    public function getPermissionsId($permiso)
+    {
+        $permissions = Permission::all();
+        foreach ($permissions as $permission) {
+            if ($permission->permission_name == $permiso) {
+                return $permission->id;
+            }
+        }
+        return false;
+    }
+    public function nested($rows = array(), $description)
+    {
+        // $padres = array();
+        $padres="";
+        if (!empty($rows)) {
+            foreach ($rows as $row) {
+                if ($row['permission_name'] == $description && $row['permission_level']!='1') {
+                    if ($row['permission_level']==2) {
+                        $padres.= $row['id_padre'];
+                    }else{
+                        $padres.= $row['id_padre'].',';  
+                    }
+                    $desc = "";
+                    foreach ($rows as $r) {
+        
+                        if ($r['id'] == $row['id_padre'] ) {
+                            $desc = $r['permission_name'];
+                         }
+                    }
+                    $padres.=$this->nested($rows, $desc); 
+                }
+            }
+        }
+        return $padres;
+    }
     /**
      * Display the specified resource.
      *
@@ -78,7 +125,18 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        $rolePermissions = (explode(',', $role->role_permission));
+        $permissionName=array();
+        $permissions = Permission::all();
+        foreach ($permissions as $permission) {
+            foreach ($rolePermissions as $rolePermission) {
+                $permission= $permission->findOrFail($rolePermission);
+                $permissionName[] = $permission->permission_name;
+            }
+        }
+        $per= array_unique($permissionName);
+        return view('roles.edit', compact('per', 'role'));
     }
 
     /**
@@ -90,7 +148,27 @@ class RolesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $role = Role::findOrFail($id);
+        $permissions = Permission::all();
+        $permissions_request = $request->input('per');
+        $role_permission="";
+        foreach ($permissions_request as $permission) {
+            $padres[]=$this->nested($permissions, $permission);
+            $permission = $this->getPermissionsId($permission);
+            $role_permission.= $permission.',';
+        }
+        $padres = array_unique($padres);
+        foreach ($padres as $padre) {
+            $role_permission.= $padre.',';
+        }
+        $role->update([
+            $role->role = $request->input('rol'),
+            $role->role_name = $request->input('nombre_rol'),
+            $role->role_description = $request->input('desc'),
+            $role->role_permission = $role_permission
+        ]);
+        return redirect()->route('roles.create');
+        
     }
 
     /**

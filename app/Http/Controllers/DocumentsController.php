@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Material;
 use Illuminate\Http\Request;
 
-class MaterialesController extends Controller
+class DocumentsController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -24,9 +28,7 @@ class MaterialesController extends Controller
      */
     public function create()
     {
-        $materiales = Material::all();
-        //dd($materiales);
-        return view('materiales.create', compact('materiales'));
+        return view('documents.create');
     }
 
     /**
@@ -37,18 +39,27 @@ class MaterialesController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->all());
-        Material::create($request->all());
-        return redirect()->route('materiales.create');
+        // $nombre = $request->input('nombre');
+        // $marca = $request->input('marca');
+        // $fecha = $request->input('fecha');
+        // $cantidad = $request->input('cantidad');
+        // $estado = $request->input('estado');
+        // $ubicacion = $request->input('ubicacion');
+
+        // DB::table('herramientas')->insert([
+        //     ['nombre_herramienta' =]
+
+
+        // ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Material  $material
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Material $material)
+    public function show($id)
     {
         //
     }
@@ -56,42 +67,34 @@ class MaterialesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Material  $material
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $material = Material::findOrFail($id);
-        return view('materiales.edit', compact('material'));
+        //
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Material  $material
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $material = Material::findOrFail($id);
-        $material->update($request->all());
-        return redirect()->route('materiales.create');
+        //
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Material  $material
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $material = Material::findOrFail($id);
-        //dd($material);
-        $material->update([
-            $material->m_estado = 0
-        ]);
-        return redirect()->route('materiales.create');
+        //
     }
 }

@@ -73,7 +73,7 @@
                 <div class="col-md-4 col-md-offset-4" style="margin-top: 10px">
                   <button type="submit" class="btn button-primary">Guardar</button>
                   <a class="btn button-primary" href="{{ route('empleados.create') }}">Cancelar</a>
-                  <a class="btn button-primary" href="{{ route('home') }}">Volver</a>
+                  <button type="button" class="btn button-primary" id="volver" name="button">Volver</button>
                 </div>
               </div>
 
