@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\User;
+use App\Role;
 
 
 use Illuminate\Http\Request;
@@ -34,9 +35,14 @@ class UsersController extends Controller
      */
     public function create()
     {
-
+        $roles = Role::all();
         $users = User::all();
+<<<<<<< HEAD
         return view('users.create', compact('users'));
+=======
+        // dd()
+        return view('users.create', compact('users', 'roles'));
+>>>>>>> 5f54200bad805c1c6dfa492eb3fc60921c75a0a5
         
     }
 
@@ -48,7 +54,7 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-       
+        // dd($request->all());
         // primero guardar
         $user = new User;
         $user->name = $request->input('nombre');
@@ -83,8 +89,10 @@ class UsersController extends Controller
     public function edit($id)
     {  
         $user = User::findOrFail($id);
+        $roles = Role::all();
         
-        return view('users.edit', compact('user'));
+        return view('users.edit', compact('user', 'roles'));
+
     }
 
     /**
@@ -96,12 +104,15 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request->all());
         $user = User::findOrFail($id);
 
         $user->update([
             $user->name = $request->input('nombre'),
             $user->username = $request->input('usuario'),
-            $user->email = $request->input('email')
+            $user->email = $request->input('email'),
+            $user->role_id = $request->input('idrole')
+
         ]);
        
         return redirect()->route('users.create');
@@ -123,4 +134,5 @@ class UsersController extends Controller
 
         return redirect()->route('users.create');
     }
+ 
 }

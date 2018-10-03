@@ -15,7 +15,7 @@
       </div>
      
       <div class="panel-body">
-        <div class="col-md-2">
+        <div class="col-md-2 col-md-offset-1">
           <label for="func">Nombre</label>
           <div class="input-group">
             <input type="text" name="nombre" class="form-control" value="{{ $user->name }}" placeholder="Nombre del empleado">
@@ -34,36 +34,43 @@
           </div>
         </div>
          <div class="col-md-2">
-          <label for="password">Contraseña</label>
-                        <div class="input-group">
-                           <input type="password" id="password" class="form-control" name="pass" value="" placeholder="Contraseña">
-                        </div>
-        </div>
-        <div class="col-md-3">
-          <div class="form-group">
-            <label for="exampleFormControlSelect1">Rol</label>
-            <?php $c=0 ?>
-            <select class="form-control" id="exampleFormControlSelect1">
-              
-              
-            </select>
+            <label for="sel1">Rol</label>
+            <div class="form-group">
+              <select class="form-control" id="idrole" name="idrole">
+                @foreach ($roles as $role)
+                <option value={{$role->id}}>{{$role->role_name}}</option> 
+                @endforeach
+              </select>
+            </div>
           </div>
-        </div>
+  
         <div class="row">
           <br>
         </div>
         <div class="row">
-          <div class="col-md-3 col-md-offset-3">
-            <input type="submit" class="btn btn-primary" value="Guardar">
-            <button type="button" class="btn btn-primary" name="button">Cancelar</button>
+          <div class="col-md-5 col-md-offset-4">
+            <button type="submit" class="btn button-primary">Guardar</button>
+            <a class="btn button-primary" href="{{ route('users.edit', $user->id) }}">Cancelar</a>
+            <a class="btn button-primary" href="{{ route('users.create') }}">Volver</a>
           </div>
         </div>
-        <hr>
+        <br>
 
 </form>
     </div>
   </div>
 </div>
 </div>
+
+<script type="text/javascript">
+  $("#volver").click(function(){
+    $.ajax({
+      url: "{{url()->current()}}",
+      success: function(){
+        window.location.replace("{{url()->previous()}}");
+      }
+    })
+  })
+</script>
 
 @stop

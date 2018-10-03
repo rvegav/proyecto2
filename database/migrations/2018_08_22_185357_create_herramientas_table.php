@@ -17,7 +17,7 @@ class CreateHerramientasTable extends Migration
             $table->increments('id_herramienta');
             $table->string('nombre_herramienta');
             $table->string('modelo')->nullable();
-            $table->date('fecha_adquisicion');
+            // $table->date('fecha_adquisicion');
             $table->string('estado', 1);
             $table->string('ubicacion')->default('Deposito Central');
             $table->integer('cantidad');

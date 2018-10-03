@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Empleado;
-use App\Rubro;
 
-class EmpleadosController extends Controller
+class DocumentsController extends Controller
 {
-    function __construc()
+    function __construct()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +18,7 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        //este método ya se realiza en create, ya no es necesario implementar
+        //
     }
 
     /**
@@ -29,9 +28,7 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        $empleados = Empleado::all();
-        $rubros = Rubro::all();
-        return view('empleados.create', compact('empleados'), compact('rubros'));
+        return view('documents.create');
     }
 
     /**
@@ -42,10 +39,18 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-        Empleado::create($request->all());
+        // $nombre = $request->input('nombre');
+        // $marca = $request->input('marca');
+        // $fecha = $request->input('fecha');
+        // $cantidad = $request->input('cantidad');
+        // $estado = $request->input('estado');
+        // $ubicacion = $request->input('ubicacion');
 
-        return redirect()->route('empleados.create'); 
+        // DB::table('herramientas')->insert([
+        //     ['nombre_herramienta' =]
+
+
+        // ]);
     }
 
     /**
@@ -56,8 +61,7 @@ class EmpleadosController extends Controller
      */
     public function show($id)
     {
-        $empleado = Empleado::findOrFail($id);
-        //return view('empleado.show', compact('$empleado'));
+        //
     }
 
     /**
@@ -68,9 +72,7 @@ class EmpleadosController extends Controller
      */
     public function edit($id)
     {
-        $empleado = Empleado::findOrFail($id);
-        $rubros = Rubro::all();
-        return view('empleados.edit', compact('empleado'), compact('rubros'));
+        //
     }
 
     /**
@@ -82,13 +84,7 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //return "LLEGO";
-        //dd($request);
-        
-        $empleado = Empleado::findOrFail($id);
-        $empleado->update($request->all());
-        // return redirect()->route('empleados.index'); //la misma cosa, se retorna empleados.create
-        return redirect()->route('empleados.create');
+        //
     }
 
     /**
@@ -99,11 +95,6 @@ class EmpleadosController extends Controller
      */
     public function destroy($id)
     {
-        //no se elimina de la bd, "se elimina" cambiando el estado nomas y se muestran solo los empleados activos o el estado equivalente y los que están de baja no se muestran
-        
-        $empleado = Empleado::findOrFail($id);
-        //dd($empleado);
-        $empleado->delete();
-        return redirect()-> route('empleados.index');
+        //
     }
 }
