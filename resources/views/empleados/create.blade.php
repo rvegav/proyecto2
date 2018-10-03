@@ -83,10 +83,6 @@
     <table class="table table-responsive">
     <thead>
       <tr>
-        {{-- <th>Primer Nombre</th>
-        <th>Segundo Nombre</th>
-        <th>Primer Apellido</th>
-        <th>Segundo Apellido</th> --}}
         <th>Nombres</th>
         <th>Apellidos</th>
         <th>Dirección</th>

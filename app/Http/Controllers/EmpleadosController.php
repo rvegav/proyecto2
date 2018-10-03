@@ -102,8 +102,9 @@ class EmpleadosController extends Controller
         //no se elimina de la bd, "se elimina" cambiando el estado nomas y se muestran solo los empleados activos o el estado equivalente y los que están de baja no se muestran
         
         $empleado = Empleado::findOrFail($id);
-        //dd($empleado);
-        $empleado->delete();
-        return redirect()-> route('empleados.index');
+        $empleado->update([
+            $empleado->estado = 0
+        ]);
+        return redirect()-> route('empleados.create');
     }
 }

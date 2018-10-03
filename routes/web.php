@@ -29,6 +29,8 @@ Route::resource('rubros', 'RubrosController');
 
 Route::resource('materiales', 'MaterialesController');
 
+Route::resource('maquinarias', 'MaquinariasController');
+
 
 
 
