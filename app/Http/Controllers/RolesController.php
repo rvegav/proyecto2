@@ -64,8 +64,15 @@ class RolesController extends Controller
             $role_permission.= $permission.',';
         }
         $padres = array_unique($padres);
+        $c=1;
         foreach ($padres as $padre) {
-            $role_permission.= $padre.',';
+            if (count($padres)==$c) {
+                $role_permission.= $padre;
+             
+            }else{
+
+                $role_permission.= $padre.',';
+            }
         }
         $role->role_permission = $role_permission;
         $role->save();
@@ -158,9 +165,19 @@ class RolesController extends Controller
             $role_permission.= $permission.',';
         }
         $padres = array_unique($padres);
+        // dd($padres);
+        $c=1;
         foreach ($padres as $padre) {
-            $role_permission.= $padre.',';
+            if (count($padres)==$c) {
+                $role_permission.= $padre;
+                # code...
+            }else{
+
+                $role_permission.= $padre.',';
+            }
+            $c++;
         }
+        // dd($role_permission);
         $role->update([
             $role->role = $request->input('rol'),
             $role->role_name = $request->input('nombre_rol'),
