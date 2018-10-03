@@ -36,7 +36,6 @@ class UsersController extends Controller
     {
 
         $users = User::all();
-
         return view('users.create', compact('users'));
         
     }

@@ -26,7 +26,7 @@
       </div>
       <hr>
       <div class="row">
-        @if (auth()->user()->hasPermits(['wor']))
+        @if (auth()->user()->hasPermission(['obras']))
             <div class="col-md-4">
              <div class="card bg-primary text-white ">
                 <div class="card-body">
@@ -36,7 +36,7 @@
               </div>
             </div>
           @endif
-          @if (auth()->user()->hasPermits(['sec']))
+          @if (auth()->user()->hasPermission(['sec']))
             <div class="col-md-4">
               <div class="card bg-primary text-white " id="users">
                 <div class="card-body">
@@ -45,9 +45,8 @@
                 </div>
               </div>
             </div>
-          
           @endif
-        @if (auth()->user()->hasPermits(['set']))
+        @if (auth()->user()->hasPermission(['set']))
           <div class="col-md-4">
             <div class="card bg-primary text-white ">
               <div class="card-body">
@@ -56,10 +55,10 @@
               </div>
             </div>
           </div>
-        </div>
         @endif
+      </div>
       <div class="row">
-        @if (auth()->user()->hasPermits(['sto']))
+        @if (auth()->user()->hasPermission(['storage']))
            <div class="col-md-4 col-md-offset-2">
             <div class="card bg-primary text-white ">
               <div class="card-body">
@@ -69,7 +68,7 @@
             </div>
           </div>
         @endif
-        @if (auth()->user()->hasPermits(['emp']))
+        @if (auth()->user()->hasPermission(['em']))
           <div class="col-md-4">
             <div class="card bg-primary text-white">
               <div class="card-body">

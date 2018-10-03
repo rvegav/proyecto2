@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 class User extends Authenticatable
 {
     use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -35,29 +34,31 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsTo(Role::Class);
     }
+    public function getPermissionsId($permiso)
+    {
+        $permissions = Permission::all();
+        foreach ($permissions as $permission) {
+            if ($permission->permission_name == $permiso) {
+                return $permission->id;
+            }
+        }
+        return false;
+    }
+    public function hasPermission(array $permisos){
 
-    // public function hasRoles(array $roles)
-    // {
-    //     foreach ($roles as $role) 
-    //     {
-    //         foreach ($this->roles as $userRole) 
-    //         {
-    //             if ($userRole->role === $role) //no se
-    //             {
-    //                 return true;
-    //             }
-    //         }   
+        $permissionUser = explode(',' , $this->role->role_permission);
+        // $a="";
 
-    //     }
-    //         return false;
-    // }
-    public function hasPermits(array $permisos){
-        // dd($this->role->role_permits);
-        $permitsUser = explode(',' , $this->role->role_permits);
-        foreach ($permisos as $permiso ) {
-            if (in_array($permiso, $permitsUser)) {
-                  return true;
-            }  
+        foreach ($permisos as $permiso) {
+            $permiso = $this->getPermissionsId($permiso);
+            if ($permiso) {
+                $permission = array_search($permiso, $permissionUser);
+                // dd($permission);
+                if ($permission!==false) {
+                      return true;
+                }  
+            }
+            // $a.=$permiso;
         }
         return false;
     }
