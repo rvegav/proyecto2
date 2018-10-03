@@ -13,15 +13,15 @@ class CreateObrasTable extends Migration
      */
     public function up()
     {
-        Schema::create('obras', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('descripcion');
-            $table->integer('cliente_id')->unsigned();
-            $table->foreign('cliente_id')->references('id')->on('clientes');
-            $table->integer('document_id')->unsigned();
-            $table->foreign('document_id')->references('id')->on('documents');
-            $table->timestamps();
-        });
+        // Schema::create('obras', function (Blueprint $table) {
+        //     $table->increments('id');
+        //     $table->string('descripcion');
+        //     $table->integer('cliente_id')->unsigned();
+        //     $table->foreign('cliente_id')->references('id')->on('clientes');
+        //     $table->integer('document_id')->unsigned();
+        //     $table->foreign('document_id')->references('id')->on('documents');
+        //     $table->timestamps();
+        // });
     }
 
     /**

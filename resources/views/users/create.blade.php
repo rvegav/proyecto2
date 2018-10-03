@@ -54,7 +54,7 @@
         <div class="row">
           <div class="col-md-5 col-md-offset-4">
             <input class="btn button-primary" value="Guardar" type="submit">
-            <button type="button" class="btn button-primary" name="button">Cancelar</button>
+            <a class="btn button-primary" href="{{ route('users.create') }}">Cancelar</a>
             <button type="button" class="btn button-primary" id="volver" name="button">Volver</button>
           </div>
         </div>

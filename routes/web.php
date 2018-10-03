@@ -19,18 +19,17 @@ Route::resource('roles', 'RolesController');
 //REST Empleados
 Route::resource('empleados', 'EmpleadosController');
 
-<<<<<<< HEAD
+
 //REST Documents
 Route::resource('documents', 'DocumentsController');
 
 //REST Obras
 Route::resource('obras', 'ObrasController');
 
-=======
 Route::resource('rubros', 'RubrosController');
 
 Route::resource('materiales', 'MaterialesController');
->>>>>>> 760a4183f36e36dbb8ba2167f8e1af0657fc5f8c
+
 
 
 

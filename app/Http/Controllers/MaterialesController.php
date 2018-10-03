@@ -37,7 +37,7 @@ class MaterialesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
         Material::create($request->all());
         return redirect()->route('materiales.create');
     }
