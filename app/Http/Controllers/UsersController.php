@@ -14,7 +14,7 @@ class UsersController extends Controller
         //el primer middleware es para que solo se pueda ingresar a la vista de users si esta autenticado
         // el segundo es para que solo el rol admin tenga acceso a Administrar Usuario
         // $this->middleware(['auth', 'roles:addUsr']); 
-        $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
 
@@ -37,12 +37,8 @@ class UsersController extends Controller
     {
         $roles = Role::all();
         $users = User::all();
-<<<<<<< HEAD
-        return view('users.create', compact('users'));
-=======
-        // dd()
+
         return view('users.create', compact('users', 'roles'));
->>>>>>> 5f54200bad805c1c6dfa492eb3fc60921c75a0a5
         
     }
 
@@ -129,7 +125,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
 
         $user->update([
-            $user->estado = 'De Baja'
+            $user->estado = 0
         ]);
 
         return redirect()->route('users.create');

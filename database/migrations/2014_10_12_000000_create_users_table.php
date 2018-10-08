@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('password');
             $table->integer('role_id');
-            $table->string('estado')->default('Activo');
+            $table->boolean('estado')->default(1);
             $table->rememberToken();
             $table->timestamps();
         });
