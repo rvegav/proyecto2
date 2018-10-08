@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Empleado;
 use App\Rubro;
+use App\Http\Requests;
+use Illuminate\Http\Request;
+use App\Http\Requests\UpdateEmpleadoRequest;
 
 class EmpleadosController extends Controller
 {
@@ -31,7 +33,9 @@ class EmpleadosController extends Controller
     {
         $empleados = Empleado::all();
         $rubros = Rubro::all();
-        return view('empleados.create', compact('empleados'), compact('rubros'));
+        // dd($empleados);
+        // dd($rubros);
+        return view('empleados.create', compact('empleados','rubros'));
     }
 
     /**
@@ -40,7 +44,7 @@ class EmpleadosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateEmpleadoRequest $request)
     {
         //dd($request->all());
         Empleado::create($request->all());
@@ -80,7 +84,7 @@ class EmpleadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateEmpleadoRequest $request, $id)
     {
         //return "LLEGO";
         //dd($request);
@@ -89,6 +93,7 @@ class EmpleadosController extends Controller
         $empleado->update($request->all());
         // return redirect()->route('empleados.index'); //la misma cosa, se retorna empleados.create
         return redirect()->route('empleados.create');
+        // return back()->with('info', 'Empleado guardado');
     }
 
     /**

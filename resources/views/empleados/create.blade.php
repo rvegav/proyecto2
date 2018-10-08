@@ -10,6 +10,11 @@
           <div class="panel-heading">
             <h1>Empleados</h1>
           </div>
+          @if(session()->has('info'))
+            <div class = "alert alert-success">
+              {{session('info')}}
+            </div>
+          @endif
           <div class="panel-body">
               <div class="col-md-2 col-md-offset-2">
                     <label for="">Primer Nombre</label>
