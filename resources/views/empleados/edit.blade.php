@@ -2,11 +2,12 @@
 
 @section('contenido')
 
+@include('errors')
 
 <form method="POST" action="{{ route('empleados.update', $empleado->id) }}">
   {!! csrf_field() !!}
   {!! method_field('PUT') !!}
-
+  
   <div class="container">
     <div class="row">
       <div class="panel panel-default">
@@ -30,7 +31,10 @@
           <div class="col-md-2">
             <label for="func">Primer Apellido</label>
             <div class="input-group">
-              <input type="text" name="primerApellido" class="form-control" value="{{ $empleado->primerApellido }}" placeholder="Primer Apellido">
+              <input type="text" name="primerApellido" class="form-control" value="{{ old('primerApellido}', $empleado->primerApellido) }}" placeholder="Primer Apellido">
+              @if ($errors->has('apellido'))
+                <div>{{ $errors->apellido }}</div>
+              @endif
             </div>
           </div>
           <div class="col-md-2">
@@ -50,6 +54,9 @@
                 <label for="" style="margin-top: 10px">Teléfono</label>
                 <div class="form-group">
                   <input type="text" size="19"  name="telefono" class="form-control" value="{{ $empleado->telefono }}" placeholder="Teléfono">
+                  @if ($errors->has('telefono'))
+                    <div>{{ $errors->telefono }}</div>
+                  @endif
                 </div>
               </div>
           <div class="col-md-2">
@@ -57,7 +64,11 @@
             <div class="form-group">
               <select class="form-control" id="rubro_id" name="rubro_id">
                 @foreach ($rubros as $rubro)
-                <option value={{$rubro->id}}>{{$rubro->nombre_rubro}}</option> 
+                   @if (old('rubro_id', $empleado->rubro_id))
+                    <option value={{$rubro->id}} selected="selected">{{$rubro->nombre_rubro}}</option> 
+                   @else
+                    <option value={{$rubro->id}}>{{$rubro->nombre_rubro}}</option> 
+                   @endif
                 @endforeach
               </select>
             </div>

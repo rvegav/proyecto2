@@ -32,6 +32,7 @@ Route::resource('materiales', 'MaterialesController');
 
 Route::resource('maquinarias', 'MaquinariasController');
 
+Route::resource('herramientas', 'HerramientasController');
 
 
 
