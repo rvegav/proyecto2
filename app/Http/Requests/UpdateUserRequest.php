@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateEmpleadoRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,19 +23,12 @@ class UpdateEmpleadoRequest extends FormRequest
      */
     public function rules()
     {
-        // dd($this->all());
         return [
-            'primerNombre' => 'required',
-            'primerApellido' => 'required',
-            'telefono' => 'required',
-            'rubro_id' => 'required'
-        ];
-    }
-
-    public function messages()
-    {
-        return [
-            'primerApellido.required' => 'El primer apellido es obligatorio',
+            'username' => 'required',
+            'email' => 'required|unique:user,email,'.$this->route('user'),
+            'name' => 'required',
+            'password' => 'required',
+            'role_id' => 'required'
         ];
     }
 }

@@ -38,7 +38,7 @@ m_estado--}}
                   <input type="text" size="19" class="form-control" name="m_costo" value="" placeholder="Costo Unitario">
                 </div>
               </div>
-              <div class="col-md-3">
+              {{-- <div class="col-md-3">
                 <label for="" >Cantidad Mínima Requerida</label>
                 <div class="form-group">
                   <input type="text" size="19" class="form-control" name="m_min_stock" value="" placeholder="Cantidad Mínima">
@@ -50,7 +50,7 @@ m_estado--}}
                 <div class="form-group">
                   <input type="text" size="19" class="form-control" name="m_cantidad_actual" value="" placeholder="Cantidad Actual">
                 </div>
-              </div>
+              </div> --}}
 
               <div class="row">
                       <br>

@@ -19,20 +19,27 @@ Route::resource('roles', 'RolesController');
 //REST Empleados
 Route::resource('empleados', 'EmpleadosController');
 
-
 //REST Documents
 Route::resource('documents', 'DocumentsController');
 
 //REST Obras
 Route::resource('obras', 'ObrasController');
 
+//REST Rubros
 Route::resource('rubros', 'RubrosController');
 
+//REST Materiales
 Route::resource('materiales', 'MaterialesController');
 
+//REST Maquinarias
 Route::resource('maquinarias', 'MaquinariasController');
 
+
 Route::resource('herramientas', 'HerramientasController');
+
+//REST Clientes
+Route::resource('clientes', 'ClientesController');
+
 
 
 

@@ -68,21 +68,19 @@
           <th>Usuario</th>
           <th>Fecha de Asignación</th>
           <th>Rol</th>
-          <th>Estado</th>
           <th>Acción</th>
       </tr>
     </thead>
           
     <tbody>
       @foreach($users as $user)
-        @if($user->estado == 'Activo')
+        @if($user->estado == 1)
         
         <tr>
           <td>{{ $user->name }}</td>
           <td>{{ $user->username }}</td>
           <td>{{ $user->created_at }}</td>
           <td>{{ $user->role->role_name }}</td>
-          <td>{{ $user->estado }}</td>
           <td>
             <a class="btn btn-link" href="{{ route('users.edit', $user->id) }}">Editar</a>
 

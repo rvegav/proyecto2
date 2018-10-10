@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Rubro;
 use Illuminate\Http\Request;
+use App\Cliente;
 
-class RubrosController extends Controller
+class ClientesController extends Controller
 {
     function __construc()
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,10 +29,8 @@ class RubrosController extends Controller
      */
     public function create()
     {
-        //
-        $rubros = Rubro::all();
-        //dd($rubros);
-        return view('rubros.create', compact('rubros'));
+        $clientes = Cliente::all();
+        return view('clientes.create', compact('clientes'));
     }
 
     /**
@@ -42,65 +41,60 @@ class RubrosController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        Rubro::create($request->all());
-        return redirect()->route('rubros.create');
+        Cliente::create($request->all());
+
+        return redirect()->route('clientes.create'); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Rubro  $rubro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Rubro $rubro)
+    public function show($id)
     {
         //
-
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Rubro  $rubro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
-        $rubros =  Rubro::findOrFail($id);
-        return view('rubros.edit', compact('rubros'));
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rubro  $rubro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
-        $rubros = Rubro::findOrFail($id);
-        $rubros->update($request->all());
-
-        return redirect()->route('rubros.create');
+        $cliente = Cliente::findOrFail($id);
+        $cliente->update($request->all());
+        return redirect()->route('clientes.create');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Rubro  $rubro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
-        $rubros = Rubro::findOrFail($id);
-        
-        $rubros->delete();
-
-        return redirect()->route('rubros.create');
+        $cliente = Cliente::findOrFail($id);
+        $cliente->update([
+            $cliente->estado = 0
+        ]);
+        return redirect()-> route('clientes.create');
     }
 }

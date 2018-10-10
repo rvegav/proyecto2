@@ -14,13 +14,16 @@ class CreateHerramientasTable extends Migration
     public function up()
     {
         Schema::create('herramientas', function (Blueprint $table) {
-            $table->increments('id_herramienta');
-            $table->string('nombre_herramienta');
-            $table->string('modelo')->nullable();
-            // $table->date('fecha_adquisicion');
-            $table->string('estado', 1);
-            $table->string('ubicacion')->default('Deposito Central');
-            $table->integer('cantidad');
+            $table->increments('id');
+            $table->string('h_nombre');
+            $table->string('h_marca');
+            $table->string('h_modelo')->nullable();
+            $table->string('h_nro_serie')->nullable();
+            $table->date('h_fecha_adquisicion');
+            //$table->string('h_estado_herramienta')->default('DISPONIBLE');
+            $table->string('h_ubicacion')->default('DEPOSITO CENTRAL');
+            //$table->integer('h_cantidad');
+            $table->boolean('h_estado')->default(1);
             $table->timestamps();
         });
     }
