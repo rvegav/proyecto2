@@ -8,43 +8,49 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h1>Administración de Maquinarias</h1>
+        <h1>Maquinarias</h1>
       </div>
      
       <div class="panel-body">
         <div class="col-md-3 col-md-offset-1">
-          <label for="func">Nombre Maquinaria</label>
+          <label for="func">Maquinaria</label>
           <div class="input-group">
             <input type="text" name="ma_nombre" class="form-control" value="" placeholder="Nombre Maquinaria">
           </div>
         </div>
+
         <div class="col-md-3">
           <label for="func">Marca</label>
           <div class="input-group">
             <input type="text" name="ma_marca" class="form-control" value="" placeholder="Marca de la maquinaria">
           </div>
         </div>
+
         <div class="col-md-3">
           <label for="func">Modelo</label>
           <div class="input-group">
             <input type="text" name="ma_modelo" class="form-control" value="" placeholder="Modelo de la maquinaria">
           </div>
         </div>
+
         <div class="row">
           <br><br><br><br>
         </div>
+        
         <div class="col-md-3 col-md-offset-1">
           <label for="func">Fecha de Adquisición</label>
           <div class="input-group">
             <input type="date" name="ma_fecha_adquisicion" class="form-control" value="" placeholder="Fecha de la adquisición de la maquinaria">
           </div>
         </div>        
+
         <div class="col-md-3">
           <label for="func">Distancia realizada</label>
           <div class="input-group">
             <input type="text" name="ma_distancia" class="form-control" value="" placeholder="Kilometraje">
           </div>
         </div>
+
         <div class="col-md-3">
           <label for="func">Fecha de Mantenimiento</label>
           <div class="input-group">
@@ -54,6 +60,7 @@
         <div class="row">
           <br><br><br><br>
         </div>
+
         <div class="row">
           <div class="col-md-5 col-md-offset-4">
             <input class="btn button-primary" value="Guardar" type="submit">

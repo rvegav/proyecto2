@@ -19,9 +19,9 @@
     	color: #575757;
     } 
 
-    .errors
+    .error
     {
-      color: #e00000;
+      color: red;
     }
 
     th

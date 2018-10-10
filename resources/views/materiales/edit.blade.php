@@ -11,7 +11,7 @@
     <div class="row">
       <div class="panel panel-default">
         <div class="panel-heading">
-          <h1>Administración de Materiales</h1>
+          <h1>Materiales</h1>
         </div>
 
         <div class="panel-body">

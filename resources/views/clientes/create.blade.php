@@ -14,7 +14,12 @@
               <div class="col-md-2 col-md-offset-2">
                     <label for="">Primer Nombre</label>
                     <div class="form-group">
-                        <input type="text" size="19"  class="form-control" value="" name="primerNombre" placeholder="Primer Nombre">
+                      <input type="text" size="19"  class="form-control{{ $errors->has('primerNombre') ? ' is-invalid' : '' }}" value="" name="primerNombre" placeholder="Primer Nombre" required>
+                      @if ($errors->has('primerNombre'))
+                        <span class="invalid-feedback errors" role="alert">
+                          <strong>{{ $errors->first('primerNombre') }}</strong>
+                        </span>
+                      @endif
                     </div>
                   </div>
 
@@ -28,7 +33,12 @@
               <div class="col-md-2">
                 <label for="" >Primer Apellido</label>
                 <div class="form-group">
-                  <input type="text" size="19" class="form-control" name="primerApellido" value="" placeholder="Primer Apellido">
+                  <input type="text" size="19" class="form-control{{ $errors->has('primerApellido') ? ' is-invalid' : '' }}" name="primerApellido" value="" placeholder="Primer Apellido" required>
+                    @if ($errors->has('primerApellido'))
+                      <span class="invalid-feedback errors" role="alert">
+                        <strong>{{ $errors->first('primerApellido') }}</strong>
+                      </span>
+                    @endif
                 </div>
               </div>
 
@@ -49,12 +59,17 @@
               <div class="col-md-2">
                 <label for="" style="margin-top: 10px">Teléfono</label>
                 <div class="form-group">
-                  <input type="text" size="19"  name="telefono" class="form-control" value="" placeholder="Teléfono">
+                  <input type="text" size="19"  name="telefono" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" value="" placeholder="Teléfono" required>
+                    @if ($errors->has('telefono'))
+                      <span class="invalid-feedback errors" role="alert">
+                          <strong>{{ $errors->first('telefono') }}</strong>
+                      </span>
+                    @endif
                 </div>
               </div>
 
               <div class="row">
-                      <br>
+                <br>
               </div>
 
               <div class="row">
