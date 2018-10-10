@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Maquinaria;
+use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreMaquinariaRequest;
 
 class MaquinariasController extends Controller
 {
@@ -34,7 +36,7 @@ class MaquinariasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreMaquinariaRequest $request)
     {
         Maquinaria::create($request->all());
         return redirect()->route('maquinarias.create'); 
@@ -70,7 +72,7 @@ class MaquinariasController extends Controller
      * @param  \App\Maquinaria  $maquinaria
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreMaquinariaRequest $request, $id)
     {
         $maquinaria = Maquinaria::findOrFail($id);
         $maquinaria->update($request->all());

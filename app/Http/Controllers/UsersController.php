@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Role;
-
-
+use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateUserRequest;
 
 class UsersController extends Controller
 { 
@@ -37,7 +37,6 @@ class UsersController extends Controller
     {
         $roles = Role::all();
         $users = User::all();
-
         return view('users.create', compact('users', 'roles'));
         
     }
@@ -48,7 +47,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(UpdateUserRequest $request)
     {
         // dd($request->all());
         // primero guardar
@@ -99,7 +98,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
         // dd($request->all());
         $user = User::findOrFail($id);

@@ -36,7 +36,7 @@
                   <input type="text" size="19" class="form-control" name="m_costo" value="{{ $material->m_costo}}" placeholder="Costo">
                 </div>
               </div>
-              <div class="col-md-3">
+              <{{-- div class="col-md-3">
                 <label for="" >Cantidad Mínima Requerida</label>
                 <div class="form-group">
                   <input type="text" size="19" class="form-control" name="m_min_stock" value="{{ $material->m_min_stock}}" placeholder="Cantidad Minima">
@@ -48,7 +48,7 @@
                 <div class="form-group">
                   <input type="text" size="19" class="form-control" name="m_cantidad_actual" value="{{ $material->m_cantidad_actual}}" placeholder="Cantidad Actual">
                 </div>
-              </div>
+              </div> --}}
 
               <div class="row">
                       <br>

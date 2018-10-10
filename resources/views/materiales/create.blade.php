@@ -36,15 +36,34 @@ m_estado--}}
               <label for="" >Costo</label>
               <div class="form-group">
                   <input type="text" size="19" class="form-control" name="m_costo" value="" placeholder="Costo Unitario">
+<<<<<<< HEAD
+=======
+                </div>
+              </div>
+              {{-- <div class="col-md-3">
+                <label for="" >Cantidad Mínima Requerida</label>
+                <div class="form-group">
+                  <input type="text" size="19" class="form-control" name="m_min_stock" value="" placeholder="Cantidad Mínima">
+                </div>
+>>>>>>> cc2739273fb55b15459350c0a1da55949c0dbf5a
               </div>
             </div>
 
+<<<<<<< HEAD
             <div class="col-md-3">
               <label for="" >Cantidad Mínima Requerida</label>
               <div class="form-group">
                 <input type="text" size="19" class="form-control" name="m_min_stock" value="" placeholder="Cantidad Mínima">
               </div>
             </div>
+=======
+              <div class="col-md-2">
+                <label for="">Cantidad Actual</label>
+                <div class="form-group">
+                  <input type="text" size="19" class="form-control" name="m_cantidad_actual" value="" placeholder="Cantidad Actual">
+                </div>
+              </div> --}}
+>>>>>>> cc2739273fb55b15459350c0a1da55949c0dbf5a
 
             <div class="col-md-2">
               <label for="">Cantidad Actual</label>

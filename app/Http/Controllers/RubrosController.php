@@ -98,6 +98,7 @@ class RubrosController extends Controller
     {
         //
         $rubros = Rubro::findOrFail($id);
+        
         $rubros->delete();
 
         return redirect()->route('rubros.create');

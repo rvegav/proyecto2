@@ -34,9 +34,11 @@ Route::resource('materiales', 'MaterialesController');
 //REST Maquinarias
 Route::resource('maquinarias', 'MaquinariasController');
 
+
+Route::resource('herramientas', 'HerramientasController');
+
 //REST Clientes
 Route::resource('clientes', 'ClientesController');
-
 
 
 

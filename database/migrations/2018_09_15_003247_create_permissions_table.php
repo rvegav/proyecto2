@@ -17,7 +17,9 @@ class CreatePermissionsTable extends Migration
             $table->increments('id');
             $table->string('permission_name');
             $table->string('permission_description');
-            $table->integer('id_padre');
+            $table->string('permission_widget');
+            $table->string('permission_level');
+            $table->integer('id_padre')->nullable();
             $table->timestamps();
         });
     }

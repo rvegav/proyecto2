@@ -2,11 +2,12 @@
 
 @section('contenido')
 
+@include('errors')
 
 <form method="POST" action="{{ route('empleados.update', $empleado->id) }}">
   {!! csrf_field() !!}
   {!! method_field('PUT') !!}
-
+  
   <div class="container">
     <div class="row">
       <div class="panel panel-default">
@@ -36,6 +37,7 @@
 
           <div class="col-md-2">
             <label for="func">Primer Apellido</label>
+<<<<<<< HEAD
             <div class="form-group">
               <input type="text" name="primerApellido" class="form-control{{ $errors->has('primerApellido') ? ' is-invalid' : '' }}" value="{{ $empleado->primerApellido }}" placeholder="Primer Apellido" required>
                 @if ($errors->has('primerApellido'))
@@ -43,6 +45,13 @@
                     <strong>{{ $errors->first('primerApellido') }}</strong>
                   </span>
                 @endif
+=======
+            <div class="input-group">
+              <input type="text" name="primerApellido" class="form-control" value="{{ old('primerApellido}', $empleado->primerApellido) }}" placeholder="Primer Apellido">
+              @if ($errors->has('apellido'))
+                <div>{{ $errors->apellido }}</div>
+              @endif
+>>>>>>> cc2739273fb55b15459350c0a1da55949c0dbf5a
             </div>
           </div>
 
@@ -72,12 +81,41 @@
             </div>
           </div>
 
+<<<<<<< HEAD
+=======
+          <div class="row">
+            <br>
+          </div>
+
+=======
+          <div class="col-md-2 col-md-offset-2">
+                <label for=""  style="margin-top: 10px">Dirección</label>
+                <div class="form-group">
+                  <input type="text" size="35" class="form-control" name="direccion" value="{{ $empleado->direccion }}" placeholder="Dirección">
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <label for="" style="margin-top: 10px">Teléfono</label>
+                <div class="form-group">
+                  <input type="text" size="19"  name="telefono" class="form-control" value="{{ $empleado->telefono }}" placeholder="Teléfono">
+                  @if ($errors->has('telefono'))
+                    <div>{{ $errors->telefono }}</div>
+                  @endif
+                </div>
+              </div>
+>>>>>>> 9bc601b1be9ec9aedd00f811f41f0b445dd13a90
+>>>>>>> cc2739273fb55b15459350c0a1da55949c0dbf5a
           <div class="col-md-2">
             <label for="sel1" style="margin-top: 10px">Rubro</label>
             <div class="form-group">
               <select class="form-control" id="rubro_id" name="rubro_id">
                 @foreach ($rubros as $rubro)
-                <option value={{$rubro->id}}>{{$rubro->nombre_rubro}}</option> 
+                   @if (old('rubro_id', $empleado->rubro_id))
+                    <option value={{$rubro->id}} selected="selected">{{$rubro->nombre_rubro}}</option> 
+                   @else
+                    <option value={{$rubro->id}}>{{$rubro->nombre_rubro}}</option> 
+                   @endif
                 @endforeach
               </select>
             </div>

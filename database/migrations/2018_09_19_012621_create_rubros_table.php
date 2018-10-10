@@ -17,6 +17,7 @@ class CreateRubrosTable extends Migration
             $table->increments('id');
             $table->string('nombre_rubro');
             $table->string('detalle_rubro');
+            $table->boolean('estado')->default(1);
             $table->timestamps();
         });
     }
