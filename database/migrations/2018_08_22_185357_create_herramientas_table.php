@@ -20,9 +20,7 @@ class CreateHerramientasTable extends Migration
             $table->string('h_modelo')->nullable();
             $table->string('h_nro_serie')->nullable();
             $table->date('h_fecha_adquisicion');
-            //$table->string('h_estado_herramienta')->default('DISPONIBLE');
             $table->string('h_ubicacion')->default('DEPOSITO CENTRAL');
-            //$table->integer('h_cantidad');
             $table->boolean('h_estado')->default(1);
             $table->timestamps();
         });

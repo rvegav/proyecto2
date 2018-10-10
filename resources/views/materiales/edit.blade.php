@@ -15,28 +15,43 @@
         </div>
 
         <div class="panel-body">
-          <div class="panel-body">
-              <div class="col-md-3">
-                    <label for="">Descipción del Material</label>
-                    <div class="form-group">
-                        <input type="text" size="19"  class="form-control" name="m_descripcion" value="{{ $material->m_descripcion}}" placeholder="Descipción del Material">
-                    </div>
-                  </div>
+            <div class="col-md-2 col-md-offset-3">
+              <label for="">Material</label>
+              <div class="form-group">
+                <input type="text"  class="form-control{{ $errors->has('m_descripcion') ? ' is-invalid' : '' }}" value="{{ $material->m_descripcion}}" name="m_descripcion" placeholder="Nombre del Material" required>
+                @if ($errors->has('m_descripcion'))
+                  <span class="invalid-feedback errors" role="alert">
+                    <strong>{{ $errors->first('m_descripcion') }}</strong>
+                  </span>
+                @endif
+              </div>
+            </div>
 
-              <div class="col-md-2">
-                <label for="">Unidad de medida</label>
-                <div class="form-group">
-                  <input type="text" size="19"  class="form-control" name="m_unidad_medida" value="{{ $material->m_unidad_medida}}" placeholder="Unidad de medida">
+            <div class="col-md-2">
+              <label for="">Unidad de medida</label>
+              <div class="form-group">
+                  <input type="text" size="19"  class="form-control{{ $errors->has('m_unidad_medida') ? ' is-invalid' : '' }}" name="m_unidad_medida" value="{{ $material->m_unidad_medida}}" placeholder="Unidad de medida" required>
+                    @if ($errors->has('m_unidad_medida'))
+                      <span class="invalid-feedback errors" role="alert">
+                        <strong>{{ $errors->first('m_unidad_medida') }}</strong>
+                      </span>
+                    @endif
+              </div>
+            </div>
+
+            <div class="col-md-2">
+              <label for="" >Costo</label>
+              <div class="form-group">
+                  <input type="text" class="form-control{{ $errors->has('m_costo') ? ' is-invalid' : '' }}" name="m_costo" value="{{ $material->m_costo}}" placeholder="Costo Unitario" required>
+                    @if ($errors->has('m_costo'))
+                      <span class="invalid-feedback errors" role="alert">
+                        <strong>{{ $errors->first('m_costo') }}</strong>
+                      </span>
+                    @endif
                 </div>
               </div>
 
-              <div class="col-md-2">
-                <label for="" >Costo</label>
-                <div class="form-group">
-                  <input type="text" size="19" class="form-control" name="m_costo" value="{{ $material->m_costo}}" placeholder="Costo">
-                </div>
-              </div>
-              <{{-- div class="col-md-3">
+              {{-- div class="col-md-3">
                 <label for="" >Cantidad Mínima Requerida</label>
                 <div class="form-group">
                   <input type="text" size="19" class="form-control" name="m_min_stock" value="{{ $material->m_min_stock}}" placeholder="Cantidad Minima">
@@ -51,7 +66,7 @@
               </div> --}}
 
               <div class="row">
-                      <br>
+                <br>
               </div>
 
               <div class="row">

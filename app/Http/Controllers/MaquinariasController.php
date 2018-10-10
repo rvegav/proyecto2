@@ -36,7 +36,7 @@ class MaquinariasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMaquinariaRequest $request)
+    public function store(Request $request)
     {
         Maquinaria::create($request->all());
         return redirect()->route('maquinarias.create'); 
@@ -50,7 +50,7 @@ class MaquinariasController extends Controller
      */
     public function show(Maquinaria $maquinaria)
     {
-        
+        //
     }
 
     /**
@@ -72,7 +72,7 @@ class MaquinariasController extends Controller
      * @param  \App\Maquinaria  $maquinaria
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreMaquinariaRequest $request, $id)
+    public function update(Request $request, $id)
     {
         $maquinaria = Maquinaria::findOrFail($id);
         $maquinaria->update($request->all());

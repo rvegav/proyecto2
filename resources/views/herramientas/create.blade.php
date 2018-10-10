@@ -4,67 +4,71 @@
 
   <form method="POST" action="{{ route('herramientas.store') }}">
     {!! csrf_field() !!}
-  {{--           $table->string('h_nombre');
-  //           $table->string('h_marca');
-  //           $table->string('h_modelo')->nullable();
-  //           $table->string('h_nro_serie')->nullable();
-  //           $table->date('h_fecha_adquisicion');
-  //           $table->string('h_estado_herramienta')->default('DISPONIBLE');
-  //           $table->string('ubicacion')->default('DEPOSITO CENTRAL');
-  //           $table->integer('cantidad'); --}}
 <div class="container">
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h1>Administración de Herramientas</h1>
+        <h1>Herramientas</h1>
       </div>
      
       <div class="panel-body">
-        <div class="col-md-3 col-md-offset-2">
-          <label for="func">Nombre de la herramienta</label>
-          <div class="input-group">
-            <input type="text" name="h_nombre" class="form-control" value="" placeholder="Nombre de la herramienta">
+        <div class="col-md-3">
+          <label for="func">Herramienta</label>
+          <div class="form-group">
+            <input type="text" size="15" name="h_nombre" class="form-control{{ $errors->has('h_nombre') ? ' is-invalid' : '' }}" value="" placeholder="Nombre de la herramienta" required>
+                @if ($errors->has('h_nombre'))
+                  <span class="invalid-feedback errors" role="alert">
+                    <strong>{{ $errors->first('h_nombre') }}</strong>
+                  </span>
+                @endif
           </div>
         </div>
-        <div class="col-md-3">
+
+        <div class="col-md-2">
           <label for="func">Marca</label>
-          <div class="input-group">
-            <input type="text" name="h_marca" class="form-control" value="" placeholder="Marca">
+          <div class="form-group">
+            <input type="text" size="15" name="h_marca" class="form-control{{ $errors->has('h_marca') ? ' is-invalid' : '' }}" value="" placeholder="Marca" required>
+                @if ($errors->has('h_marca'))
+                  <span class="invalid-feedback errors" role="alert">
+                    <strong>{{ $errors->first('h_marca') }}</strong>
+                  </span>
+                @endif
           </div>
         </div>
-        <div class="col-md-3">
+
+        <div class="col-md-2">
           <label for="func">Modelo</label>
-          <div class="input-group">
-            <input type="text" name="h_modelo" class="form-control" value="" placeholder="Modelo">
+          <div class="form-group">
+            <input type="text" size="15" name="h_modelo" class="form-control" value="" placeholder="Modelo">
           </div>
         </div>
-        <div class="row">
-          <br><br><br><br>
-        </div>
-        <div class="col-md-3 col-md-offset-2">
-          <label for="func">Nro de Serie</label>
-          <div class="input-group">
-            <input type="text" name="h_nro_serie" class="form-control" value="" placeholder="Nro de Serie">
+
+        <div class="col-md-2">
+          <label for="func">Serie</label>
+          <div class="form-group">
+            <input type="text" size="15" name="h_nro_serie" class="form-control" value="" placeholder="Nro de Serie">
           </div>
         </div>
-        <div class="col-md-3 ">
+
+        <div class="col-md-2">
           <label for="func">Fecha de Adquisición</label>
-          <div class="input-group">
-            <input type="date" name="h_fecha_adquisicion" class="form-control" value="" placeholder="Fecha de Adquisición">
+          <div class="form-group">
+            <input type="date" name="h_fecha_adquisicion" class="form-control{{ $errors->has('h_fecha_adquisicion') ? ' is-invalid' : '' }}" value="" placeholder="Fecha de Adquisición" required>
+                @if ($errors->has('h_fecha_adquisicion'))
+                  <span class="invalid-feedback errors" role="alert">
+                    <strong>{{ $errors->first('h_fecha_adquisicion') }}</strong>
+                  </span>
+                @endif
           </div>
         </div>
-        <div class="col-md-3">
+
+        {{-- <div class="col-md-3">
           <label for="func">Ubicación</label>
           <div class="input-group">
             <input type="text" name="h_ubicacion" class="form-control" value="" placeholder="Ubicación">
           </div>
-        </div>
-        {{-- <div class="col-md-3">
-          <label for="func">Cantidad</label>
-          <div class="input-group">
-            <input type="text" name="h_cantidad" class="form-control" value="" placeholder="Cantidad">
-          </div>
         </div> --}}
+
         <div class="row">
           <br><br><br><br>
         </div>
@@ -87,7 +91,6 @@
           <th>Nro de Serie</th>
           <th>Fecha de Adquisición</th>
           <th>Ubicación</th>
-          <th>Cantidad</th>
           <th>Acción</th>
       </tr>
     </thead>
@@ -103,8 +106,6 @@
           <td>{{ $herramienta->h_nro_serie }}</td>
           <td>{{ $herramienta->h_fecha_adquisicion }}</td>
           <td>{{ $herramienta->h_ubicacion }}</td>
-          <td>{{ $herramienta->h_cantidad }}</td>
-
           <td>
             <a class="btn btn-link" href="{{ route('herramientas.edit', $herramienta->id) }}">Editar</a>
 

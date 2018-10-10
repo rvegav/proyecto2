@@ -20,7 +20,7 @@ class CreateMaquinariasTable extends Migration
             $table->string('ma_modelo')->nullable();
             $table->date('ma_fecha_adquisicion');
             $table->string('ma_distancia')->nullable();
-            $table->date('ma_fecha_mantenimiento');
+            $table->date('ma_fecha_mantenimiento')->nullable();
             $table->boolean('ma_estado')->default(1);
             $table->timestamps();
         });

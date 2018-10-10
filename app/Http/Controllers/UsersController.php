@@ -47,7 +47,7 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UpdateUserRequest $request)
+    public function store(Request $request)
     {
         // dd($request->all());
         // primero guardar
@@ -98,7 +98,7 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateUserRequest $request, $id)
+    public function update(Request $request, $id)
     {
         // dd($request->all());
         $user = User::findOrFail($id);

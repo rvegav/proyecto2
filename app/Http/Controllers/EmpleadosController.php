@@ -44,7 +44,7 @@ class EmpleadosController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(UpdateEmpleadoRequest $request)
+    public function store(Request $request)
     {
         //dd($request->all());
         Empleado::create($request->all());
@@ -84,7 +84,7 @@ class EmpleadosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEmpleadoRequest $request, $id)
+    public function update(Request $request, $id)
     {
         //return "LLEGO";
         //dd($request);
