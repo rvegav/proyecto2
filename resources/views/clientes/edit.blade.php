@@ -16,44 +16,18 @@
 
         <div class="panel-body">
           <div class="col-md-2 col-md-offset-2">
-            <label for="func">Primer Nombre</label>
-            <div class="form-group">
-              <input type="text" name="primerNombre" class="form-control{{ $errors->has('primerNombre') ? ' is-invalid' : '' }}" value="{{ $cliente->primerNombre }}" placeholder="Primer Nombre del empleado" required>
-                @if ($errors->has('primerNombre'))
+            <label for="" style="margin-top: 10px">Cliente</label>
+              <div class="form-group">
+                <input type="text" size="19"  class="form-control{{ $errors->has('nombre_cliente') ? ' is-invalid' : '' }}" value="{{ $cliente->nombre }}" name="nombre_cliente" placeholder="Nombre de la entidad" required>
+                @if ($errors->has('nombre_cliente'))
                   <span class="invalid-feedback errors" role="alert">
-                    <strong>{{ $errors->first('primerNombre') }}</strong>
+                    <strong>{{ $errors->first('nombre_cliente') }}</strong>
                   </span>
                 @endif
-            </div>
+              </div>
           </div>
 
-          <div class="col-md-2">
-            <label for="func">Segundo Nombre</label>
-            <div class="form-group">
-              <input type="text" name="segundoNombre" class="form-control" value="{{ $cliente->segundoNombre }}" placeholder="Segundo Nombre">
-            </div>
-          </div>
-
-          <div class="col-md-2">
-            <label for="func">Primer Apellido</label>
-            <div class="form-group">
-              <input type="text" name="primerApellido" class="form-control{{ $errors->has('primerApellido') ? ' is-invalid' : '' }}" value="{{ $cliente->primerApellido }}" placeholder="Primer Apellido" required>
-                @if ($errors->has('primerApellido'))
-                  <span class="invalid-feedback errors" role="alert">
-                    <strong>{{ $errors->first('primerApellido') }}</strong>
-                  </span>
-                @endif
-            </div>
-          </div>
-
-          <div class="col-md-2">
-            <label for="func">Segundo Apellido</label>
-            <div class="form-group">
-              <input type="text" name="segundoApellido" class="form-control" value="{{ $cliente->segundoApellido }}" placeholder="Segundo Apellido">
-            </div>
-          </div>
-
-          <div class="col-md-3 col-md-offset-2">
+          <div class="col-md-3">
             <label for=""  style="margin-top: 10px">Dirección</label>
             <div class="form-group">
                   <input type="text" size="35" class="form-control" name="direccion" value="{{ $cliente->direccion }}" placeholder="Dirección">

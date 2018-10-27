@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Obra;
+use App\Cliente;
+use App\Empleado;
 
 class ObrasController extends Controller
 {
@@ -13,7 +16,7 @@ class ObrasController extends Controller
      */
     public function index()
     {
-        //
+        //      
     }
 
     /**
@@ -23,7 +26,10 @@ class ObrasController extends Controller
      */
     public function create()
     {
-        return view('obras.create');
+        $obras = Obra::all();
+        $clientes = Cliente::all();
+        
+        return view('obras.create', compact('obras','clientes'));
     }
 
     /**
@@ -34,7 +40,9 @@ class ObrasController extends Controller
      */
     public function store(Request $request)
     {
-        return "op";
+        Obra::create($request->all());
+
+        return redirect()->route('obras.create'); 
     }
 
     /**
@@ -43,9 +51,13 @@ class ObrasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id) //muestra empleados de obra
     {
-        //
+        $empleadosObras = Obra::find($id)->empleados()->get();
+        $obra = Obra::find($id);
+        $empleados = Empleado::all();
+
+        return view('obras.show', compact('empleadosObras','obra','empleados'));    
     }
 
     /**
@@ -56,7 +68,11 @@ class ObrasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $obra = Obra::findOrFail($id);
+        $clientes = Cliente::all();
+
+        return view('obras.create', compact('obra','clientes'));
+         // return view('obras.create', compact('clientes'));
     }
 
     /**
@@ -68,7 +84,11 @@ class ObrasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $obra = Obra::findOrFail($id);
+        $obra->update($request->all());
+
+        return redirect()->route('obras.create');
+
     }
 
     /**
@@ -77,8 +97,14 @@ class ObrasController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function desvincular(Obra $obra, $id) //desvincula empleado de obra
     {
-        //
+        $empleado = Empleado::findOrFail($id);
+        $obra->empleados()->detach($empleado);
+        $id_obra = $obra->id;
+
+       return redirect()->route('obras.show', $obra->id);
+   
     }
+        
 }

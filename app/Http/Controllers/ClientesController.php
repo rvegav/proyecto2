@@ -41,13 +41,13 @@ class ClientesController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request->all());
         Cliente::create($request->all());
 
         return redirect()->route('clientes.create'); 
     }
 
     /**
-     * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response

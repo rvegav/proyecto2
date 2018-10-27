@@ -76,14 +76,13 @@
          <div class="col-md-2">
             <label for="sel1" style="margin-top: 10px">Rubro</label>
             <div class="form-group">
-              <select class="form-control" id="rubro_id" name="rubro_id">
-                @foreach ($rubros as $rubro)
-                   @if (old('rubro_id', $empleado->rubro_id))
-                    <option value={{$rubro->id}} selected="selected">{{$rubro->nombre_rubro}}</option> 
-                   @else
-                    <option value={{$rubro->id}}>{{$rubro->nombre_rubro}}</option> 
-                   @endif
-                @endforeach
+              <select class="form-control" name="rubro" id="rubro">
+                <optgroup label="Rubro actual"></optgroup>
+                <option>{{$empleado->rubro->nombre_rubro}}</option>
+                <optgroup label="Rubro a asignar"></optgroup>
+                  @foreach ($rubros as $rubro)
+                    <option value={{$rubro->id}}>{{$rubro->nombre_rubro}} </option>
+                  @endforeach
               </select>
             </div>
           </div>

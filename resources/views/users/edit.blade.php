@@ -55,12 +55,11 @@
             <label for="sel1">Rol</label>
             <div class="form-group">
               <select class="form-control" id="idrole" name="idrole">
+                 <optgroup label="Rol actual"></optgroup>
+                <option>{{$user->role_id->role_name}}</option>
+                <optgroup label="Rol a asignar"></optgroup>
                   @foreach ($roles as $role)
-                    @if (old('role_id', $user->role_id))
-                      <option value={{$role->id}} selected="selected">{{$role->nombre_rubro}}</option> 
-                    @else
-                      <option value={{$role->id}}>{{$role->nombre_rubro}}</option> 
-                    @endif
+                    <option value={{$role->id}}>{{$role->role_name}} </option>
                   @endforeach
               </select>
             </div>

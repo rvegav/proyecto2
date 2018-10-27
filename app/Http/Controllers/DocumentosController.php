@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Documento;
+use App\Obra;
 
-class DocumentsController extends Controller
+class DocumentosController extends Controller
 {
-    function __construct()
+    function __construc()
     {
         $this->middleware('auth');
     }
@@ -28,7 +30,7 @@ class DocumentsController extends Controller
      */
     public function create()
     {
-        return view('documents.create');
+        // 
     }
 
     /**
@@ -38,19 +40,10 @@ class DocumentsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        // $nombre = $request->input('nombre');
-        // $marca = $request->input('marca');
-        // $fecha = $request->input('fecha');
-        // $cantidad = $request->input('cantidad');
-        // $estado = $request->input('estado');
-        // $ubicacion = $request->input('ubicacion');
-
-        // DB::table('herramientas')->insert([
-        //     ['nombre_herramienta' =]
-
-
-        // ]);
+    {       
+        Documento::create($request->all());
+        
+        return redirect()->route('documentos.show', $request->obra_id); 
     }
 
     /**
@@ -59,9 +52,12 @@ class DocumentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($id_obra)
     {
-        //
+        $documentos = Documento::all();
+        $obraDocumentos[] = Obra::findOrFail($id_obra)->documentos()->get();
+
+        return view('documentos.create', compact('obraDocumentos', 'id_obra'));
     }
 
     /**
@@ -72,7 +68,9 @@ class DocumentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $documento = Documento::findOrFail($id);
+        
+        return view('documentos.edit', compact('documento'));
     }
 
     /**
@@ -84,7 +82,10 @@ class DocumentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $documento = Documento::findOrFail($id);
+        $documento->update($request->all());
+
+        return redirect()->route('documentos.show', $request->obra_id); 
     }
 
     /**

@@ -14,6 +14,11 @@
     	text-align: center; 
     } 
 
+    h4
+    { 
+      color: #575757;
+    } 
+
     label 
     { 
     	color: #575757;

@@ -12,44 +12,18 @@
           </div>
           <div class="panel-body">
               <div class="col-md-2 col-md-offset-2">
-                    <label for="">Primer Nombre</label>
-                    <div class="form-group">
-                      <input type="text" size="19"  class="form-control{{ $errors->has('primerNombre') ? ' is-invalid' : '' }}" value="" name="primerNombre" placeholder="Primer Nombre" required>
-                      @if ($errors->has('primerNombre'))
-                        <span class="invalid-feedback errors" role="alert">
-                          <strong>{{ $errors->first('primerNombre') }}</strong>
-                        </span>
-                      @endif
-                    </div>
-                  </div>
-
-              <div class="col-md-2">
-                <label for="">Segundo Nombre</label>
-                <div class="form-group">
-                  <input type="text" size="19"  class="form-control" name="segundoNombre" value="" placeholder="Segundo Nombre">
-                </div>
-              </div>
-
-              <div class="col-md-2">
-                <label for="" >Primer Apellido</label>
-                <div class="form-group">
-                  <input type="text" size="19" class="form-control{{ $errors->has('primerApellido') ? ' is-invalid' : '' }}" name="primerApellido" value="" placeholder="Primer Apellido" required>
-                    @if ($errors->has('primerApellido'))
+                <label for="" style="margin-top: 10px">Cliente</label>
+                  <div class="form-group">
+                    <input type="text" class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" value="" name="nombre" placeholder="Nombre del cliente" required>
+                    @if ($errors->has('nombre'))
                       <span class="invalid-feedback errors" role="alert">
-                        <strong>{{ $errors->first('primerApellido') }}</strong>
+                        <strong>{{ $errors->first('nombre') }}</strong>
                       </span>
                     @endif
-                </div>
+                  </div>
               </div>
 
-              <div class="col-md-2">
-                <label for="">Segundo Apellido</label>
-                <div class="form-group">
-                  <input type="text" size="19" class="form-control" name="segundoApellido" value="" placeholder="Segundo Apellido">
-                </div>
-              </div>
-
-              <div class="col-md-3 col-md-offset-2">
+              <div class="col-md-3">
                 <label for=""  style="margin-top: 10px">Dirección</label>
                 <div class="form-group">
                   <input type="text" size="35" class="form-control" name="direccion" value="" placeholder="Dirección">
@@ -86,8 +60,7 @@
     <table class="table table-responsive">
     <thead>
       <tr>
-        <th>Nombres</th>
-        <th>Apellidos</th>
+        <th>Cliente</th>
         <th>Dirección</th>
         <th>Teléfono</th>
         <th>Acción</th>
@@ -98,8 +71,7 @@
         @foreach($clientes as $cliente)
           @if($cliente->estado == 1)
             <tr>
-              <td>{{ $cliente->primerNombre .' '.$cliente->segundoNombre }}</td>
-              <td>{{ $cliente->primerApellido .' '.$cliente->segundoApellido }}</td>
+              <td>{{ $cliente->nombre }}</td>
               <td>{{ $cliente->direccion }}</td>
               <td>{{ $cliente->telefono }}</td>
               <td>
@@ -131,4 +103,5 @@
     })
   })
 </script>
+
 @stop

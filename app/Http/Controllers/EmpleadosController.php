@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Empleado;
 use App\Rubro;
+use App\Obra;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateEmpleadoRequest;
@@ -33,9 +34,15 @@ class EmpleadosController extends Controller
     {
         $empleados = Empleado::all();
         $rubros = Rubro::all();
-        // dd($empleados);
-        // dd($rubros);
-        return view('empleados.create', compact('empleados','rubros'));
+        $obras = Obra::all();
+        
+        foreach ($empleados as $empleado) 
+        {
+            $empleadosObras[] = Empleado::find($empleado->id)->obras()->get();
+
+        }
+
+        return view('empleados.create', compact('empleados','rubros','obras', 'empleadosObras'));
     }
 
     /**
@@ -60,8 +67,7 @@ class EmpleadosController extends Controller
      */
     public function show($id)
     {
-        $empleado = Empleado::findOrFail($id);
-        //return view('empleado.show', compact('$empleado'));
+       //
     }
 
     /**
@@ -74,7 +80,7 @@ class EmpleadosController extends Controller
     {
         $empleado = Empleado::findOrFail($id);
         $rubros = Rubro::all();
-        return view('empleados.edit', compact('empleado'), compact('rubros'));
+        return view('empleados.edit', compact('empleado','rubros'));
     }
 
     /**
@@ -86,14 +92,11 @@ class EmpleadosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //return "LLEGO";
-        //dd($request);
-        
         $empleado = Empleado::findOrFail($id);
         $empleado->update($request->all());
-        // return redirect()->route('empleados.index'); //la misma cosa, se retorna empleados.create
+
         return redirect()->route('empleados.create');
-        // return back()->with('info', 'Empleado guardado');
+        
     }
 
     /**
@@ -112,4 +115,5 @@ class EmpleadosController extends Controller
         ]);
         return redirect()-> route('empleados.create');
     }
+
 }
