@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Maquinaria;
+use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreMaquinariaRequest;
 
 class MaquinariasController extends Controller
 {
@@ -48,7 +50,7 @@ class MaquinariasController extends Controller
      */
     public function show(Maquinaria $maquinaria)
     {
-        
+        //
     }
 
     /**

@@ -11,49 +11,67 @@
   <div class="row">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h1>Administración de Maquinarias</h1>
+        <h1>Maquinarias</h1>
       </div>
-     
+
       <div class="panel-body">
-        <div class="col-md-3 col-md-offset-1">
-          <label for="func">Nombre Maquinaria</label>
-          <div class="input-group">
-            <input type="text" name="ma_nombre" class="form-control" value="{{$maquinaria->ma_nombre}}" placeholder="Nombre Maquinaria">
+      <div class="col-md-2">
+          <label for="func">Maquinaria</label>
+          <div class="form-group">
+            <input type="text" name="ma_nombre" class="form-control{{ $errors->has('ma_nombre') ? ' is-invalid' : '' }}" value="{{$maquinaria->ma_nombre}}"  placeholder="Nombre Maquinaria" required>
+                @if ($errors->has('ma_nombre'))
+                  <span class="invalid-feedback errors" role="alert">
+                    <strong>{{ $errors->first('ma_nombre') }}</strong>
+                  </span>
+                @endif
           </div>
         </div>
-        <div class="col-md-3">
+
+        <div class="col-md-2">
           <label for="func">Marca</label>
-          <div class="input-group">
-            <input type="text" name="ma_marca" class="form-control" value="{{$maquinaria->ma_marca}}" placeholder="Marca de la maquinaria">
+          <div class="form-group">
+            <input type="text" name="ma_marca" class="form-control{{ $errors->has('ma_marca') ? ' is-invalid' : '' }}" value="{{$maquinaria->ma_marca}}" placeholder="Marca de la maquinaria" required>
+              @if ($errors->has('ma_marca'))
+                <span class="invalid-feedback errors" role="alert">
+                  <strong>{{ $errors->first('ma_marca') }}</strong>
+                </span>
+              @endif
           </div>
         </div>
-        <div class="col-md-3">
+
+        <div class="col-md-2">
           <label for="func">Modelo</label>
-          <div class="input-group">
-            <input type="text" name="ma_modelo" class="form-control" value="{{$maquinaria->ma_modelo}}" placeholder="Modelo de la maquinaria">
+          <div class="form-group">
+            <input type="text" name="ma_modelo" class="form-control" value="{{$maquinaria->ma_modelo}}" placeholder="Modelo">
           </div>
         </div>
-        <div class="row">
-          <br><br><br><br>
-        </div>
-        <div class="col-md-3 col-md-offset-1">
+        
+        <div class="col-md-2">
           <label for="func">Fecha de Adquisición</label>
-          <div class="input-group">
-            <input type="Date" name="ma_fecha_adquisicion" class="form-control " value="{{$maquinaria->ma_fecha_adquisicion}}" placeholder="Fecha de la adquisición de la maquinaria">
+          <div class="form-group">
+            <input type="date" name="ma_fecha_adquisicion" class="form-control{{ $errors->has('ma_fecha_adquisicion') ? ' is-invalid' : '' }}" value="{{$maquinaria->ma_fecha_adquisicion}}" required="">
+            @if ($errors->has('ma_fecha_adquisicion'))
+                <span class="invalid-feedback errors" role="alert">
+                  <strong>{{ $errors->first('ma_fecha_adquisicion') }}</strong>
+                </span>
+              @endif
           </div>
         </div>        
-        <div class="col-md-3">
+
+        <div class="col-md-2">
           <label for="func">Distancia realizada</label>
-          <div class="input-group">
+          <div class="form-group">
             <input type="text" name="ma_distancia" class="form-control" value="{{$maquinaria->ma_distancia}}" placeholder="Kilometraje">
           </div>
         </div>
-        <div class="col-md-3">
-          <label for="func">Fecha de Mantenimiento</label>
-          <div class="input-group">
-            <input type="date" name="ma_fecha_mantenimiento" class="form-control" value="{{$maquinaria->ma_fecha_mantenimiento}}" placeholder="Fecha de mantenimiento de la maquinaria">
+
+        <div class="col-md-2">
+          <label for="func">Fecha Mantenimiento</label>
+          <div class="form-group">
+            <input type="date"  name="ma_fecha_mantenimiento" class="form-control" value="{{$maquinaria->ma_fecha_mantenimiento}}" placeholder="Fecha de mantenimiento de la maquinaria">
           </div>
         </div>
+ 
         <div class="row">
           <br><br><br><br>
         </div>

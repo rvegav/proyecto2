@@ -3,10 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Cliente;
 
-class DocumentsController extends Controller
+class ClientesController extends Controller
 {
-    function __construct()
+    function __construc()
     {
         $this->middleware(['auth', 'roles:docu']); 
     }
@@ -28,7 +29,8 @@ class DocumentsController extends Controller
      */
     public function create()
     {
-        return view('documents.create');
+        $clientes = Cliente::all();
+        return view('clientes.create', compact('clientes'));
     }
 
     /**
@@ -39,22 +41,13 @@ class DocumentsController extends Controller
      */
     public function store(Request $request)
     {
-        // $nombre = $request->input('nombre');
-        // $marca = $request->input('marca');
-        // $fecha = $request->input('fecha');
-        // $cantidad = $request->input('cantidad');
-        // $estado = $request->input('estado');
-        // $ubicacion = $request->input('ubicacion');
+        //dd($request->all());
+        Cliente::create($request->all());
 
-        // DB::table('herramientas')->insert([
-        //     ['nombre_herramienta' =]
-
-
-        // ]);
+        return redirect()->route('clientes.create'); 
     }
 
     /**
-     * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -72,7 +65,8 @@ class DocumentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('clientes.edit', compact('cliente'));
     }
 
     /**
@@ -84,7 +78,9 @@ class DocumentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        $cliente->update($request->all());
+        return redirect()->route('clientes.create');
     }
 
     /**
@@ -95,6 +91,10 @@ class DocumentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        $cliente->update([
+            $cliente->estado = 0
+        ]);
+        return redirect()-> route('clientes.create');
     }
 }

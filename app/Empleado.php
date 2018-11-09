@@ -11,6 +11,10 @@ class Empleado extends Model
     public function rubro(){
 	return $this->belongsTo(Rubro::Class);
 	}
+
+	public function obras(){
+	return $this->belongsToMany(Obra::Class)->withTimestamps();
+	}
 }
 
 

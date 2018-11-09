@@ -18,8 +18,8 @@ class CreateMaterialesTable extends Migration
             $table->string('m_descripcion');
             $table->string('m_unidad_medida');
             $table->double('m_costo');
-            $table->decimal('m_min_stock');
-            $table->decimal('m_cantidad_actual');
+            //$table->decimal('m_min_stock');
+            //$table->decimal('m_cantidad_actual');
             $table->boolean('m_estado')->defaut(1);
             $table->timestamps();
         });

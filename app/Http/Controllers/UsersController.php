@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 use App\User;
 use App\Role;
-
-
+use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Requests\UpdateUserRequest;
 
 class UsersController extends Controller
 { 
@@ -38,7 +38,10 @@ class UsersController extends Controller
         $roles = Role::all();
         $users = User::all();
         return view('users.create', compact('users', 'roles'));
+<<<<<<< HEAD
 
+=======
+>>>>>>> 426628a6eec38e768fe13648b3740546a40194d0
         
     }
 
@@ -52,6 +55,7 @@ class UsersController extends Controller
     {
         // dd($request->all());
         // primero guardar
+
         $user = new User;
         $user->name = $request->input('nombre');
         $user->username = $request->input('usuario');
@@ -125,10 +129,9 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
 
         $user->update([
-            $user->estado = 'De Baja'
+            $user->estado = 0
         ]);
 
         return redirect()->route('users.create');
     }
- 
 }

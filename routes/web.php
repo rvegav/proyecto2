@@ -22,25 +22,39 @@ Route::resource('roles', 'RolesController');
 //REST Empleados
 Route::resource('empleados', 'EmpleadosController');
 
-
 //REST Documents
-Route::resource('documents', 'DocumentsController');
+Route::resource('documentos', 'DocumentosController');
 
 //REST Obras
 Route::resource('obras', 'ObrasController');
 
+//REST Rubros
 Route::resource('rubros', 'RubrosController');
 
+//REST Materiales
 Route::resource('materiales', 'MaterialesController');
 
+//REST Maquinarias
 Route::resource('maquinarias', 'MaquinariasController');
 
+//REST Herramientas
+Route::resource('herramientas', 'HerramientasController');
+
+//REST Clientes
+Route::resource('clientes', 'ClientesController');
+
+//REST Almacenes
+Route::resource('storages', 'StoragesController');
+
+//EmpleadosObras
+Route::post('empleadosObras/{id}', ['as' => 'empleadosObras', 'uses'=>'EmpleadosObrasController@asignarEmpleadoObra']);
+
+//Desvincular empleado de obra
+Route::get('desvincular/{obra}/{id}', ['as' => 'desvincular', 'uses'=>'ObrasController@desvincular']);
 
 // Route::get('almacen', '';
 
 
 
 
-// Route::get('/herramientas/create', ['as' => 'herramientas.create', 'uses' => 'HerramientasController@create']);
 
-// Route::post('/herramientas', ['as' => 'herramientas.store', 'uses' => 'HerramientasController@store']);

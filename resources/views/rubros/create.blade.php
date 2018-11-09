@@ -14,15 +14,19 @@
 						<div class="row">
 							<div class="col-md-2 col-md-offset-3">
 								<label for="">Rubro</label>
-								<input type="text" class="form-control" name="nombre_rubro" value="" placeholder="Nombre del rubro">
+								<input type="text" class="form-control{{ $errors->has('nombre_rubro') ? ' is-invalid' : '' }}" name="nombre_rubro" value="" placeholder="Nombre del rubro" required>
+                  					@if ($errors->has('nombre_rubro'))
+                    					<span class="invalid-feedback errors" role="alert">
+                      					<strong>{{ $errors->first('nombre_rubro') }}</strong>
+                    					</span>
+                  					@endif
 							</div>
+							
 							<div class="col-md-3">
 								<label for="">Detalle</label>
 								<input type="text" class="form-control" name="detalle_rubro" value="" placeholder="Detalle del rubro">
 							</div>
 						</div>
-					</tbody>
-				</table>
 			</div>
 			
 			<div class="row">

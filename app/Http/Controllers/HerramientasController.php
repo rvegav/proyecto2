@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Herramienta;
+use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreHerramientaRequest;
 
 class HerramientasController extends Controller
 {
+    function __construc()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +30,8 @@ class HerramientasController extends Controller
      */
     public function create()
     {
-        return view('herramientas.create');
+        $herramientas = Herramienta::All();
+        return view('herramientas.create', compact('herramientas'));
     }
 
     /**
@@ -32,64 +40,61 @@ class HerramientasController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreHerramientaRequest $request)
     {
-      /*  $nombre = $request->input('nombre');
-        $marca = $request->input('marca');
-        $fecha = $request->input('fecha');
-        $cantidad = $request->input('cantidad');
-        $estado = $request->input('estado');
-        $ubicacion = $request->input('ubicacion');
-
-        DB::table('herramientas')->insert([
-            ['nombre_herramienta' =]
-
-
-        ]);*/
+        Herramienta::create($request->all());
+        return redirect()->route('herramientas.create'); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Herramnienta  $herramnienta
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Herramnienta $herramnienta)
     {
-        //
+        
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Herramnienta  $herramnienta
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
+        $herramienta = Herramienta::findOrFail($id);
+        return view('herramientas.edit', compact('herramienta'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Herramnienta  $herramnienta
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(StoreHerramientaRequest $request, $id)
     {
-        //
+        $herramienta = Herramienta::findOrFail($id);
+        $herramienta->update($request->all());
+        return redirect()->route('herramientas.create');   
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Herramnienta  $herramnienta
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+         $herramnienta = Herramienta::findOrFail($id);
+        $herramnienta->update([
+            $herramnienta->h_estado = 0
+        ]);
+        return redirect()-> route('herramientas.create');
     }
 }

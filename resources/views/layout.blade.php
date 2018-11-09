@@ -7,8 +7,65 @@
 <link rel="stylesheet" type="text/css" href="{{asset("css/style.css")}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="{{asset("css/dataTables.min.css")}}">
 {{-- 	<nav class="navbar navbar-default" role="navigation">
+=======
+  <style type="text/css">
+    h1 
+    { 
+    	color: #575757;
+    	text-align: center; 
+    } 
+
+    h4
+    { 
+      color: #575757;
+    } 
+
+    label 
+    { 
+    	color: #575757;
+    } 
+
+    .error
+    {
+      color: red;
+    }
+
+    th
+    {
+    	color: #575757;
+
+    }
+
+    td
+    {
+    	color: #5a5959;
+    }
+
+    .button-primary
+    {
+    	color: #5a5959;
+    	background-color: #cdcdcd; 
+    	border-color: "#cdcdcd";
+    	/*font-weight:bold;*/
+    }
+
+    .button-primary:hover 
+    {
+    	background-color: darkgrey;
+	}
+
+	.btn-link 
+	{
+    	color: #575757;
+	}
+
+  </style>
+
+	<nav class="navbar navbar-default" role="navigation">
+>>>>>>> 426628a6eec38e768fe13648b3740546a40194d0
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">

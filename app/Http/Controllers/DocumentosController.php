@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Rubro;
 use Illuminate\Http\Request;
+use App\Documento;
+use App\Obra;
 
-class RubrosController extends Controller
+class DocumentosController extends Controller
 {
     function __construc()
     {
-        $this->middleware(['auth', 'roles:rubrMant']); 
+        $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -28,10 +30,7 @@ class RubrosController extends Controller
      */
     public function create()
     {
-        //
-        $rubros = Rubro::all();
-        //dd($rubros);
-        return view('rubros.create', compact('rubros'));
+        // 
     }
 
     /**
@@ -41,66 +40,62 @@ class RubrosController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
-        Rubro::create($request->all());
-        return redirect()->route('rubros.create');
+    {       
+        Documento::create($request->all());
+        
+        return redirect()->route('documentos.show', $request->obra_id); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Rubro  $rubro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Rubro $rubro)
+    public function show($id_obra)
     {
-        //
+        $documentos = Documento::all();
+        $obraDocumentos[] = Obra::findOrFail($id_obra)->documentos()->get();
 
+        return view('documentos.create', compact('obraDocumentos', 'id_obra'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Rubro  $rubro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        //
-        $rubros =  Rubro::findOrFail($id);
-        return view('rubros.edit', compact('rubros'));
+        $documento = Documento::findOrFail($id);
+        
+        return view('documentos.edit', compact('documento'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Rubro  $rubro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
-        $rubros = Rubro::findOrFail($id);
-        $rubros->update($request->all());
+        $documento = Documento::findOrFail($id);
+        $documento->update($request->all());
 
-        return redirect()->route('rubros.create');
+        return redirect()->route('documentos.show', $request->obra_id); 
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Rubro  $rubro
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         //
-        $rubros = Rubro::findOrFail($id);
-        
-        $rubros->delete();
-
-        return redirect()->route('rubros.create');
     }
 }

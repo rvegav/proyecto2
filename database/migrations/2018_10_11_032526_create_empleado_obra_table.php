@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRubrosTable extends Migration
+class CreateEmpleadoObraTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateRubrosTable extends Migration
      */
     public function up()
     {
-        Schema::create('rubros', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre_rubro');
-            $table->string('detalle_rubro');
-            $table->boolean('estado')->default(1);
+        Schema::create('empleado_obra', function (Blueprint $table) {
+            $table->integer('empleado_id');
+            $table->integer('obra_id');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateRubrosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rubros');
+        Schema::dropIfExists('empleado_obra');
     }
 }
