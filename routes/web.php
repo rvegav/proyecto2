@@ -3,6 +3,9 @@
 //Rutas
 Route::get('home', ['as' => 'home', 'uses'=>'PagesController@home']);
 Route::get('usersRole', ['as'=> 'userRole', 'uses' => 'PagesController@loadAdministrationView']);
+Route::get('subMant', ['as'=> 'subMant', 'uses' => 'PagesController@loadMantenedores']);
+Route::get('almacen', ['as'=> 'almacen', 'uses' => 'PagesController@loadStore']);
+
 
 //Login y Logout
 Route::get('/', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
@@ -32,6 +35,8 @@ Route::resource('materiales', 'MaterialesController');
 
 Route::resource('maquinarias', 'MaquinariasController');
 
+
+// Route::get('almacen', '';
 
 
 

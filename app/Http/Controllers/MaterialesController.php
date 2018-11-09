@@ -14,8 +14,7 @@ class MaterialesController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $this->middleware(['auth', 'roles:mate']);     }
 
     /**
      * Show the form for creating a new resource.

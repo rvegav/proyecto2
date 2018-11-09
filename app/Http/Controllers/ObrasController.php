@@ -13,8 +13,7 @@ class ObrasController extends Controller
      */
     public function index()
     {
-        //
-    }
+        $this->middleware(['auth', 'roles:obras']);     }
 
     /**
      * Show the form for creating a new resource.

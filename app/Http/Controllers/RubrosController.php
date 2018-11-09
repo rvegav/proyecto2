@@ -9,7 +9,7 @@ class RubrosController extends Controller
 {
     function __construc()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'roles:rubrMant']); 
     }
     /**
      * Display a listing of the resource.

@@ -10,7 +10,7 @@ class EmpleadosController extends Controller
 {
     function __construc()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'roles:emplMant']); 
     }
     /**
      * Display a listing of the resource.
@@ -31,6 +31,7 @@ class EmpleadosController extends Controller
     {
         $empleados = Empleado::all();
         $rubros = Rubro::all();
+        // dd($empleados);
         return view('empleados.create', compact('empleados'), compact('rubros'));
     }
 
@@ -42,7 +43,7 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         Empleado::create($request->all());
 
         return redirect()->route('empleados.create'); 

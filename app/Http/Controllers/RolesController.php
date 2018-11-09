@@ -16,7 +16,7 @@ class RolesController extends Controller
 
     function __construct()
     {
-        $this->middleware('auth');
+        // $this->middleware(['auth', 'roles:role']); 
     }
 
 
@@ -73,8 +73,10 @@ class RolesController extends Controller
 
                 $role_permission.= $padre.',';
             }
+            $c++;
         }
         $role->role_permission = $role_permission;
+
         $role->save();
         return redirect()->route('roles.create');
     }

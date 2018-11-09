@@ -14,7 +14,7 @@ class MaquinariasController extends Controller
      */
     public function index()
     {
-        //
+        $this->middleware(['auth', 'roles:maq']); 
     }
 
     /**

@@ -43,8 +43,10 @@
             <label for="sel1" >Rubro</label>
             <div class="form-group">
               <select class="form-control" id="rubro_id" name="rubro_id">
+
                 @foreach ($rubros as $rubro)
-                <option value={{$rubro->id}}>{{$rubro->nombre_rubro}}</option> 
+                  <label for="seleccionado"> algo</label>
+                  <option value={{$rubro->id}} @if($empleado->rubro->id == $rubro->id) id="seleccionado" selected @endif>{{$rubro->nombre_rubro}}</option> 
                 @endforeach
               </select>
             </div>

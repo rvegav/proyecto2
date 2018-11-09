@@ -25,13 +25,13 @@
           </div>
       </div>
       <hr>
-      <div class="row">
+      {{-- <div class="row">
         @if (auth()->user()->hasPermission(['obras']))
             <div class="col-md-4">
-             <div class="card bg-primary text-white ">
+             <div class="card bg-primary text-white " id="obras">
                 <div class="card-body">
                   <h3 class="card-title text-center">Obras</h3>
-                  <p class="card-text text-center"><i class="fa fa-industry fa-4x"></i><i class="fa fa-home fa-5x"></i></p>
+                  <p class="card-text text-center"> </p>
                 </div>
               </div>
             </div>
@@ -41,14 +41,14 @@
               <div class="card bg-primary text-white " id="users">
                 <div class="card-body">
                   <h3 class="card-title text-center">Seguridad</h3>
-                  <p class="card-text text-center"><i class="fa fa-users fa-5x"></i><i class="fa fa-gear fa-5x"></i></p>
+                  <p class="card-text text-center"><i class="fa fa-users fa-1x"></i><i class="fa fa-gear fa-1x"></i></p>
                 </div>
               </div>
             </div>
           @endif
         @if (auth()->user()->hasPermission(['set']))
           <div class="col-md-4">
-            <div class="card bg-primary text-white ">
+            <div class="card bg-primary text-white" id="herramientas">
               <div class="card-body">
                 <h3 class="card-title text-center">Herramientas</h3>
                 <p class="card-text text-center"><i class="fa fa-wrench fa-5x"></i><i class="fa fa-gavel fa-5x"></i></p>
@@ -58,11 +58,11 @@
         @endif
       </div>
       <div class="row">
-        @if (auth()->user()->hasPermission(['storage']))
-           <div class="col-md-4 col-md-offset-2">
+        @if (auth()->user()->hasPermission(['mant']))
+           <div class="col-md-4 col-md-offset-2" id="subMant">
             <div class="card bg-primary text-white ">
               <div class="card-body">
-                <h3 class="card-title text-center">Almacén General</h3>
+                <h3 class="card-title text-center">Mantenedores</h3>
                 <p class="card-text text-center"><i class="fa fa-cube fa-5x"></i></p>
               </div>
             </div>
@@ -78,7 +78,7 @@
             </div>
           </div>
         @endif
-      </div>
+      </div> --}}
     </div>
     <div class="panel-footer">
       <footer>Copyright ® {{ date('Y') }}</footer>
@@ -91,6 +91,22 @@
       url: "/",
       success: function(){
         window.location.replace("{{ route('userRole') }}");
+      }
+    })
+  });
+  $("#obras").click(function(){
+    $.ajax({
+      url: "/",
+      success: function(){
+        window.location.replace("{{ route('obras.create') }}");
+      }
+    })
+  });
+  $("#subMant").click(function(){
+    $.ajax({
+      url: "/",
+      success: function(){
+        window.location.replace("{{ route('subMant') }}");
       }
     })
   });
