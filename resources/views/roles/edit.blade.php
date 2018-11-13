@@ -61,7 +61,7 @@
 				</div>
 				<br>
 				<div id="empleado" class="panel-collapse collapse">
-					<input type="checkbox" name="per[]" value="asigEmpl" @if(in_array("delUSe", $per)) {{'checked'}} @endif>Asignar Empleado<br>
+					<input type="checkbox" name="per[]" value="asigEmpl" @if(in_array("addUSe", $per)) {{'checked'}} @endif>Asignar Empleado<br>
 					<input type="checkbox" name="per[]" value="desvEml" @if(in_array("delUSe", $per)) {{'checked'}} @endif>Desvincular Empleado<br>
 					{{-- <input type="checkbox" name="per[]" value="AD" @if(in_array("delUSe", $per)) {{'checked'}} @endif>a determinar<br> --}}
 				</div>

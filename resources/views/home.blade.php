@@ -85,7 +85,7 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
+{{-- <script type="text/javascript">
   $("#users").click(function(){
     $.ajax({
       url: "/",
@@ -118,6 +118,6 @@
   }
 );
 </script>
-
+ --}}
 @stop
 

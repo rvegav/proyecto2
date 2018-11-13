@@ -55,11 +55,16 @@
 							<div class="row">
 								<label for="mate">Descripcion</label>
 								<input type="text" id="mate" name="mate" placeholder="Material Requerido">
+								{{-- <label for="" style="margin-top: 10px">Material</label>
+               					<div class="form-group">
+					                <select class="form-control" id="mate_id" name="mate_id">
+					                    @foreach ($materiales as $material) {
+					                    	<option id="mate" value={{$material->id}}>{{$material->m_descripcion}}</option> 
+					                    @endforeach
+					                </select>
+                				</div> --}}
 								<label for="cant">Cantidad</label>
-								<input type="text" id="cant" name="cant" placeholder="Cantidad Requerida">								
-							</div>
-							<div class="row">
-								<button type="button" id="eliminar" name"eliminar" class="btn btn-primary"><i class="fa fa-trash"></i></button>
+								<input type="text" onkeyup="format(this)" id="cant" name="cant" placeholder="Cantidad Requerida">								
 							</div>
 							<div class="row">
 								<div class="table-responsive" >
@@ -68,7 +73,7 @@
 											<tr>
 												<th>Material</th>
 												<th>Cantidad</th>
-												{{-- <th>Accion</th> --}}
+												<th>Accion</th>
 											</tr>
 										</thead>
 										<tbody>
@@ -100,68 +105,66 @@
 </div>
 <!-- Modal -->
 @push('scripts')
-	<script type="text/javascript">
-		var counter = 1;
-		var materiales = [];
-		var cantMateriales =0;
-		var t = $('#materiales').DataTable( {
-			"paging":   false,
-			"ordering": false,
-			"info":     false,
-			"searching": false,
-			"language":{
-				"sEmptyTable": "No se agregó ningun Material"
-			}
-		} );
-		// $(document).on('click', '#eliminar', function(event){
-		// 	event.preventDefault();
-		// 	// $(this).closest('tr').remove;
-		// 	t.row(this).remove().draw(false);
+<script type="text/javascript">
+	var counter = 1;
+	var materiales = [];
+	var cantMateriales =0;
+	var t = $('#materiales').DataTable( {
+		"paging":   false,
+		"ordering": false,
+		"info":     false,
+		"searching": false,
+		"language":{
+			"sEmptyTable": "No se agregó ningun Material"
+		}
+	} );
+	document.getElementById("cant").onkeypress = function() {myFunction(event, t, counter )};
+	$('#materiales tbody').on('click', '#eliminar', function(){
+		t.row($(this).parents('tr')).remove().draw(false);
+		$("#cant_total").html('<th>Total Articulos: '+t.data().length+'</th>');
+	});
 
-		// })
-		$("#eliminar").click(function(){
-					
-			t.row('.selected').remove().draw(false);
-			$("#cant_total").html('<th>Total Articulos: '++'</th>');
-
-		});
-		$(document).ready(function() {
-			$('#materiales tbody').on('click', 'tr', function(){
-				if ($(this).hasClass('selected')){
-					$(this).removeClass('selected');
-				}
-				else{
-					t.$('tr.selected').removeClass('selected');
-					$(this).addClass('selected');
-
-				}
-			});
-			
-
-			document.getElementById("cant").onkeypress = function() {myFunction(event, t, counter )};
-		} );
-		function myFunction(e, t, counter) {
-			var cant = $('#cant').val();
-			var mate = $('#mate').val();
-			var id_mate = $('#id_mate').val();
-			var button = '<button type="button" id="eliminar" name"eliminar" class="btn btn-primary"><i class="fa fa-trash"></i></button>';
+	function myFunction(e, t, counter) {
+		var cant = $('#cant').val();
+		var mate = $('#mate').val();
+		var id_mate = $('#id_mate').val();
+		var button = '<button type="button" id="eliminar" name"eliminar" class="btn btn-primary"><i class="fa fa-trash"></i></button>';
+		if(!isNaN(cant)){
+			cant = cant.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+			cant = cant.split('').reverse().join('').replace(/^[\.]/,'');
+			$('#cant').value = cant;
 			if (e.which == 13) {
-				materiales.push(mate|);
+				// materiales.push(mate);
 				t.row.add( [
 					mate,
-					cant
+					cant, button
 					] ).draw( false );
-				$("#cant_total").html('<th>Total Articulos: '+materiales.length+'</th>');
+				$("#cant_total").html('<th>Total Articulos: '+t.data().length+'</th>');
 				$('#mate').val("");
 				$('#cant').val("");
 				$('#id_mate').val("");
 				$('#mate').focus();
+				// console.log(t.rows().data()[1]);
+				// console.log(mater);
 			}
+		}else{
+			alert('Debe ser en numeros');
+		}
+	};
+	function format(input){
+		var num = input.value.replace(/\./g,'');
+		if(!isNaN(num)){
+			num = num.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+			num = num.split('').reverse().join('').replace(/^[\.]/,'');
+			input.value = num;
+		}
+ 		else{ alert('Solo se permiten numeros');
+			input.value = input.value.replace(/[^\d\.]*/g,'');
+		}
+	}
 
-		};
-
-</script>
-@endpush
-@endsection
+	</script>
+	@endpush
+	@endsection
 
 

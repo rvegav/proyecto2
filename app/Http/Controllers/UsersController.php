@@ -5,6 +5,7 @@ use App\User;
 use App\Role;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Http\Requests\UpdateUserRequest;
 
 class UsersController extends Controller
@@ -13,8 +14,7 @@ class UsersController extends Controller
     {
         //el primer middleware es para que solo se pueda ingresar a la vista de users si esta autenticado
         // el segundo es para que solo el rol admin tenga acceso a Administrar Usuario
-        $this->middleware(['auth', 'roles:usr']); 
-        // $this->middleware('auth');
+        // $this->middleware(['auth', 'roles:usr']); 
     }
 
 
@@ -38,10 +38,6 @@ class UsersController extends Controller
         $roles = Role::all();
         $users = User::all();
         return view('users.create', compact('users', 'roles'));
-<<<<<<< HEAD
-
-=======
->>>>>>> 426628a6eec38e768fe13648b3740546a40194d0
         
     }
 
@@ -60,8 +56,9 @@ class UsersController extends Controller
         $user->name = $request->input('nombre');
         $user->username = $request->input('usuario');
         $user->email = $request->input('email');
-        $user->password = bcrypt($request->input('pass'));
+        $user->password = bcrypt($request->input('password'));
         $user->role_id = $request->input('idrole');
+        // $user->setRememberToken(Str::random(60));
         $user->save();
 
         //luego redireccionar

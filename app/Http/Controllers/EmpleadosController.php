@@ -34,10 +34,8 @@ class EmpleadosController extends Controller
     {
         $empleados = Empleado::all();
         $rubros = Rubro::all();
-<<<<<<< HEAD
         // dd($empleados);
         return view('empleados.create', compact('empleados'), compact('rubros'));
-=======
         $obras = Obra::all();
         
         foreach ($empleados as $empleado) 
@@ -47,7 +45,6 @@ class EmpleadosController extends Controller
         }
 
         return view('empleados.create', compact('empleados','rubros','obras', 'empleadosObras'));
->>>>>>> 426628a6eec38e768fe13648b3740546a40194d0
     }
 
     /**

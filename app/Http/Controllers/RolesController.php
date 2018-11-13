@@ -172,7 +172,7 @@ class RolesController extends Controller
         foreach ($padres as $padre) {
             if (count($padres)==$c) {
                 $role_permission.= $padre;
-                # code...
+             
             }else{
 
                 $role_permission.= $padre.',';

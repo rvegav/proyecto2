@@ -9,7 +9,7 @@ Route::get('almacen', ['as'=> 'almacen', 'uses' => 'PagesController@loadStore'])
 
 //Login y Logout
 Route::get('/', ['as' => 'login', 'uses' => 'Auth\LoginController@showLoginForm']);
-Route::post('login', 'Auth\LoginController@login');
+// Route::post('login', 'Auth\LoginController@login');
 Route::get('logout', 'Auth\LoginController@logout');
 Auth::routes();
 

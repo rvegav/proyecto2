@@ -57,6 +57,26 @@
             </div>
           </div>
         @endif
+         @if (auth()->user()->hasPermission(['mant']))
+          <div class="col-md-4">
+            <div class="card bg-primary text-white " id="herramientas">
+              <div class="card-body">
+                <h3 class="card-title text-center">Herramientas</h3>
+                <p class="card-text text-center"><i class="fa fa-wrench fa-5x"></i></p>
+              </div>
+            </div>
+          </div>
+        @endif
+      @if (auth()->user()->hasPermission(['mant']))
+          <div class="col-md-4">
+            <div class="card bg-primary text-white " id="clientes">
+              <div class="card-body">
+                <h3 class="card-title text-center">Clientes</h3>
+                <p class="card-text text-center"><i class="fa fa-users fa-5x"></i></p>
+              </div>
+            </div>
+          </div>
+        @endif
       </div>
     </div>
     <div class="panel-footer">
@@ -64,47 +84,58 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  $("#empl").click(function(){
-    $.ajax({
-      url: "{{url()->current()}}",
-      success: function(){
-        window.location.replace("{{ route('empleados.create') }}");
-      }
-    })
-  });
-  $("#maq").click(function(){
-    $.ajax({
-      url: "{{url()->current()}}",
-      success: function(){
-        window.location.replace("{{ route('maquinarias.create') }}");
-      }
-    })
-  });
-  $("#rubro").click(function(){
-    $.ajax({
-      url: "{{url()->current()}}",
-      success: function(){
-        window.location.replace("{{ route('rubros.create') }}");
-      }
-    })
-  });
- $( ".card" ).hover(
-    function() {
-      $( this ).append( $( "<span> ***</span>" ) );
-    }, function() {
-      $( this ).find( "span:last" ).remove();
-    }
-  );
-  $("#materiales").click(function(){
-    $.ajax({
-      url: "{{url()->current()}}",
-      success: function(){
-        window.location.replace("{{ route('materiales.create') }}");
-      }
-    })
-  });
-</script>
+@push('scripts')
+  {{-- expr --}}
+  <script type="text/javascript">
+    $("#empl").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{ route('empleados.create') }}");
+        }
+      })
+    });
+    $("#maq").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{ route('maquinarias.create') }}");
+        }
+      })
+    });
+    $("#rubro").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{ route('rubros.create') }}");
+        }
+      })
+    });
+     $("#clientes").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{ route('clientes.create') }}");
+        }
+      })
+    });
+   // $( ".card" ).hover(
+   //    function() {
+   //      $( this ).append( $( "<span> ***</span>" ) );
+   //    }, function() {
+   //      $( this ).find( "span:last" ).remove();
+   //    }
+   //  );
+    $("#materiales").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{ route('materiales.create') }}");
+        }
+      })
+    });
+  </script>
+@endpush
 
-@stop
+@endsection
 

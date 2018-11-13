@@ -6,93 +6,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="{{asset("css/style.css")}}">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-
-<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="{{asset("css/dataTables.min.css")}}">
-{{-- 	<nav class="navbar navbar-default" role="navigation">
-=======
-  <style type="text/css">
-    h1 
-    { 
-    	color: #575757;
-    	text-align: center; 
-    } 
-
-    h4
-    { 
-      color: #575757;
-    } 
-
-    label 
-    { 
-    	color: #575757;
-    } 
-
-    .error
-    {
-      color: red;
-    }
-
-    th
-    {
-    	color: #575757;
-
-    }
-
-    td
-    {
-    	color: #5a5959;
-    }
-
-    .button-primary
-    {
-    	color: #5a5959;
-    	background-color: #cdcdcd; 
-    	border-color: "#cdcdcd";
-    	/*font-weight:bold;*/
-    }
-
-    .button-primary:hover 
-    {
-    	background-color: darkgrey;
-	}
-
-	.btn-link 
-	{
-    	color: #575757;
-	}
-
-  </style>
-
-	<nav class="navbar navbar-default" role="navigation">
->>>>>>> 426628a6eec38e768fe13648b3740546a40194d0
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-					<span class="sr-only">Toggle navigation</span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="{{ url('home') }}">Constructora Filartiga-Cárdenas</a>
-			</div>
-	
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav navbar-right">
-					@if (auth()->check())
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ auth()->user()->name }}<b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="/logout">Cerrar Sesión</a></li>
-							</ul>	
-						</li>
-					@endif
-				
-					@if (auth()->guest())
-						<a href="/login"></a>
-					@endif
-					</ul>
-       </nav> --}}
        @if (auth()->check())
        <div class="wrapper">
         <!-- Sidebar Holder -->
@@ -116,18 +30,18 @@
             @if (auth()->user()->hasPermission(['obras']))
 
             <li>
-              <a href=""><i class="fa fa-home fa-2x"></i> Obras</a>
+              <a href="{{ route('obras.create') }}"><i class="fa fa-home fa-2x"></i> Obras</a>
             </li>
             @endif
             @if (auth()->user()->hasPermission(['storage']))
             <li>
-              <a href=""><i class="fa fa-industry fa-2x"></i> Almacen</a>
+              <a href="{{ route('storages.create') }}"><i class="fa fa-industry fa-2x"></i> Almacen</a>
             </li>
             
             @endif
             @if (auth()->user()->hasPermission(['fact']))
             <li>
-              <a href=""><i class="fa fa-address-card fa-2x"></i> Facturas</a>
+              <a href="{{ route('subMant') }}"><i class="fa fa-address-card fa-2x"></i> Facturas</a>
             </li>
             
             @endif

@@ -180,14 +180,17 @@
 </div>
 </div>
 
-<script type="text/javascript">
-  $("#volver").click(function(){
-    $.ajax({
-      url: "{{url()->current()}}",
-      success: function(){
-        window.location.replace("{{ route('userRole') }}");
-      }
+
+@push('scripts')
+  <script type="text/javascript">
+    $("#volver").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{ route('userRole') }}");
+        }
+      })
     })
-  })
-</script>
-@stop
+  </script>
+@endpush
+@endsection
