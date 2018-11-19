@@ -16,7 +16,7 @@ class CreateObrasTable extends Migration
         Schema::create('obras', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre_proyecto');
-            $table->string('cliente');
+            $table->string('cliente_id');
             $table->date('fecha_inicio');
             $table->date('fecha_fin')->nullable();
             $table->timestamps();
