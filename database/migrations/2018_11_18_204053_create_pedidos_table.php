@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateDocumentosTable extends Migration
+class CreatePedidosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateDocumentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('documentos', function (Blueprint $table) {
+        Schema::create('pedidos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->string('tipo_doc_id');
-            $table->date('fecha_emision');
-            $table->string('ubicacion')->nullable();
-            $table->integer('obra_id');
+            $table->date('p_fecha_compra')->nullable();
+            $table->date('p_fecha_pedido')->nullable();
+            $table->boolean('p_estado')->default(1);
+            $table->string('p_observacion')->nullable();
+            $table->integer('obra_id')->nullable();
             $table->timestamps();
         });
     }
@@ -31,6 +31,6 @@ class CreateDocumentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('documentos');
+        Schema::dropIfExists('pedidos');
     }
 }

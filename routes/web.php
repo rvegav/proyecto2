@@ -53,8 +53,7 @@ Route::post('empleadosObras/{id}', ['as' => 'empleadosObras', 'uses'=>'Empleados
 Route::get('desvincular/{obra}/{id}', ['as' => 'desvincular', 'uses'=>'ObrasController@desvincular']);
 
 // Route::get('almacen', '';
-
-
-
+Route::resource('almacen', 'AlmacenController');
+Route::post('almacenMateriales' , ['as'=> 'almacenMateriales', 'uses' => 'AlmacenController@getMateriales']);
 
 
