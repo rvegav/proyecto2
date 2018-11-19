@@ -59,7 +59,8 @@
                 <option>{{$user->role->role_name}}</option>
                 <optgroup label="Rol a asignar"></optgroup>
                   @foreach ($roles as $role)
-                    <option value={{$role->id}}>{{$role->role_name}} </option>
+                    
+                    <option value={{$role->id}}> {{$role->role_name}} </option>
                   @endforeach
               </select>
             </div>

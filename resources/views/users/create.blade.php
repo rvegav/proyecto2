@@ -88,7 +88,7 @@
        <br>
   </form>
 
-    <table class="table table-responsive">
+    <table class="table table-responsive" id="empleados">
     <thead>
       <tr>
           <th>Empleado</th>
@@ -127,14 +127,17 @@
   </div>
 </div>
 </div>
-<script type="text/javascript">
-  $("#volver").click(function(){
-    $.ajax({
-      url: "{{url()->current()}}",
-      success: function(){
-        window.location.replace("{{url()->previous()}}");
-      }
+@push('scripts')
+  <script type="text/javascript">
+    var t = $('#empleados').DataTable();
+    $("#volver").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{url()->previous()}}");
+        }
+      })
     })
-  })
-</script>
-@stop
+  </script>
+@endpush
+@endsection

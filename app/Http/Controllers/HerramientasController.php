@@ -20,7 +20,7 @@ class HerramientasController extends Controller
      */
     public function index()
     {
-        //
+        $this->middleware(['auth', 'roles:herraMant']); 
     }
 
     /**

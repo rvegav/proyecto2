@@ -1,4 +1,4 @@
-@extends('layout')
+  @extends('layout')
 
 @section('contenido')
 
@@ -42,28 +42,22 @@
         <hr>
         <div class="row">
           <div class="col-md-3 col-md-offset-5">
-            <input type="submit" class="btn btn-primary" value="Guardar">
-            <button type="button" class="btn btn-primary" name="button">Cancelar</button>
-            {{-- <a href="{{ route('home') }}"><button type="button" class="btn btn-primary" name="button">Volver</button></a> --}}
+            <input type="submit" class="btn button-primary" value="Guardar">
+            <button type="button" class="btn button-primary" id="btnCancel" name="button">Cancelar</button>
+            <button type="button" class="btn button-primary" id="volver" name="button">Volver</button>
           </div>
         </div>
         <hr>
-        {{-- <div>
-          {!!$permissions !!}
-          
-
-        </div>
-         --}}
         <div class="row">
     
           <div class="col-md-3">
-            <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#obras" data-parent="#accordion">Obras</button>
+            <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#obras" data-parent="#accordion">Obras</button>
           </div>
           <div class="col-md-3">
             <div id="obras" class="panel-collapse collapse">
-              <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#doc">Documentos</button>
-              <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#almacen" data-parent="#accordion">Almacén</button>
-              <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#empleado" data-parent="#accordion">Empleados</button>
+              <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#doc">Documentos</button>
+              <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#almacen" data-parent="#accordion">Almacén</button>
+              <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#empleado" data-parent="#accordion">Empleados</button>
             </div>
           </div>
           <div class="col-md-3">
@@ -89,13 +83,13 @@
         
         <div class="row">
           <div class="col-md-3">
-            <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#mant" data-parent="#accordion">Mantenimiento</button>
+            <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#mant" data-parent="#accordion">Mantenimiento</button>
           </div>
           <div class="col-md-3">
             <div id="mant" class="collapse">
-              <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#empl" data-parent="#accordion">Empleados</button>
-              <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#rubro" data-parent="#accordion">Rubros</button>
-              <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#mate" data-parent="#accordion">Materiales</button>   
+              <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#empl" data-parent="#accordion">Empleados</button>
+              <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#rubro" data-parent="#accordion">Rubros</button>
+              <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#mate" data-parent="#accordion">Materiales</button>   
             </div>
           </div>
           <div class="col-md-3">
@@ -113,7 +107,7 @@
             <br> 
             <div id="mate" class="collapse">
               <input type="checkbox" name="per[]" value="addMate">Agregar Materiales<br>
-              <input type="checkbox" name="per[]" value="eduMate">Editar Materiales<br>
+              <input type="checkbox" name="per[]" value="ediMate">Editar Materiales<br>
               <input type="checkbox" name="per[]" value="delMate">Eliminar Materiales<br>
             </div>
           </div>
@@ -121,12 +115,12 @@
         </div>
         <div class="row">
           <div class="col-md-3">
-            <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#seguridad" data-parent="#accordion">Seguridad</button>
+            <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#seguridad" data-parent="#accordion">Seguridad</button>
           </div>
           <div class="col-md-3">
             <div id="seguridad" class="collapse">
-              <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#usuario" data-parent="#accordion">Usuario</button>
-              <button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#roles" data-parent="#accordion">Roles</button>   
+              <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#usuario" data-parent="#accordion">Usuario</button>
+              <button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#roles" data-parent="#accordion">Roles</button>   
             </div>
           </div>
           <div class="col-md-3">
@@ -144,6 +138,7 @@
           </div>
         </div>
         </form>
+        <hr>
         <table class="table table-responsive">
           <thead>
             <tr>
@@ -152,7 +147,7 @@
                 <th>Descripción</th>
                 <th>Fecha de Creación</th>
                 <th>Fecha de Actualización</th>
-                <th>Estado</th>
+                {{-- <th>Estado</th> --}}
                 <th>Acción</th>
             </tr>
           </thead> 
@@ -164,7 +159,7 @@
                 <td>{{ $role->role_description }}</td>
                 <td>{{ $role->created_at }}</td>
                 <td>{{ $role->updated_at }}</td>
-                <td>--</td>
+                {{-- <td>--</td> --}}
                 <td>
                   <a href="{{ route('roles.edit', $role->id) }}">Editar</a>
                   <form style="display: inline" method="POST" action="{{ route('roles.destroy', $role->id) }}">
@@ -180,46 +175,22 @@
       </div>
     </div>    
 
-     {{-- <table class="table table-responsive">
-    <thead>
-      <tr>
-          <th>Empleado</th>
-          <th>Usuario</th>
-          <th>Fecha de Asignación</th>
-          <th>Rol</th>
-          <th>Estado</th>
-          <th>Acción</th>
-      </tr>
-    </thead>
-          
-    <tbody>
-      @foreach($users as $user)
-        @if($user->estado == 'Activo')
-        
-        <tr>
-          <td>{{ $user->name }}</td>
-          <td>{{ $user->username }}</td>
-          <td>{{ $user->created_at }}</td>
-          <td>--</td>
-          <td>{{ $user->estado }}</td>
-          <td>
-            <a href="{{ route('users.edit', $user->id) }}">Editar</a>
-
-            <form style="display: inline" method="POST" action="{{ route('users.destroy', $user->id) }}">
-                  {!! csrf_field() !!}
-                  {!! method_field('DELETE') !!}
-              <button type="submit">Eliminar</button>
-            </form>
-          </td>
-        </tr>
-        @endif
-      @endforeach
-    </tbody>
-  </table> --}}
-
     </div>
   </div>
 </div>
 </div>
 
-@stop
+
+@push('scripts')
+  <script type="text/javascript">
+    $("#volver").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{ route('userRole') }}");
+        }
+      })
+    })
+  </script>
+@endpush
+@endsection

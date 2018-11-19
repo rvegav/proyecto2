@@ -8,10 +8,11 @@ class PagesController extends Controller
 {
 	public function __construct()
 	{
-		$this->middleware('auth');
-		// $this->middleware(['auth', 'roles:wor,sec,emp,sto,set']);
-    }
+		$this->middleware(['auth']);
+		
+	}
 
+// $this->middleware(['auth', 'roles:wor,sec,emp,sto,set']);
     public function home()
     {
     	return view('home');
@@ -21,6 +22,9 @@ class PagesController extends Controller
     {
     	return view('AdminUsers');
     }
-
-    
+    function loadMantenedores()
+    {
+        return view('subMantenedores');
+    }
+   
 }

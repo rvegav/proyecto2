@@ -6,16 +6,6 @@
 <br>
 <br>
   <div class="container" id="login">
-{{--     <div class=''col-md-3 col-md-offset-4''>
-      <div class="col-md-6 col-md-offset-3">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-                        holi
-          </div>
-        </div>
-      </div>
-    </div> --}}
-
     <div class=''col-md-3 col-md-offset-4">
       <div class="col-md-6 col-md-offset-3">
         <div class="panel-body">
@@ -52,8 +42,7 @@
                                     <span class="invalid-feedback errors error" role="alert">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                            @endif
-
+                            @endif  
                         </div>
                   </div>
                </div>

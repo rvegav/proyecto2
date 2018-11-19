@@ -29,22 +29,22 @@
 		<hr>
 		<div class="row">
 			<div class="col-md-3 col-md-offset-5">
-				<input type="submit" class="btn btn-primary" value="Guardar">
-				<button type="button" class="btn btn-primary" name="button">Cancelar</button>
-				{{-- <a href="{{ route('home') }}"><button type="button" class="btn btn-primary" name="button">Volver</button></a> --}}
+				<input type="submit" class="btn button-primary" value="Guardar">
+				<button type="button" class="btn button-primary" name="button">Cancelar</button>
+				{{-- <a href="{{ route('home') }}"><button type="button" class="btn button-primary" name="button">Volver</button></a> --}}
 			</div>
 		</div>
 		<hr>
 		<div class="row">
 
 			<div class="col-md-3">
-				<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#obras" data-parent="#accordion">Obras</button>
+				<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#obras" data-parent="#accordion">Obras</button>
 			</div>
 			<div class="col-md-3">
 				<div id="obras" class="panel-collapse collapse">
-					<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#doc">Documentos</button>
-					<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#almacen" data-parent="#accordion">Almacén</button>
-					<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#empleado" data-parent="#accordion">Empleados</button>
+					<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#doc">Documentos</button>
+					<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#almacen" data-parent="#accordion">Almacén</button>
+					<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#empleado" data-parent="#accordion">Empleados</button>
 				</div>
 			</div>
 			<div class="col-md-3">
@@ -61,8 +61,8 @@
 				</div>
 				<br>
 				<div id="empleado" class="panel-collapse collapse">
-					<input type="checkbox" name="per[]" value="asigEmpl" @if(in_array("delUSe", $per)) {{'checked'}} @endif>Asignar Empleado<br>
-					<input type="checkbox" name="per[]" value="desvEml" @if(in_array("delUSe", $per)) {{'checked'}} @endif>Desvincular Empleado<br>
+					<input type="checkbox" name="per[]" value="asigEmpl" @if(in_array("asigEmpl", $per)) {{'checked'}} @endif>Asignar Empleado<br>
+					<input type="checkbox" name="per[]" value="desvEml" @if(in_array("desvEml", $per)) {{'checked'}} @endif>Desvincular Empleado<br>
 					{{-- <input type="checkbox" name="per[]" value="AD" @if(in_array("delUSe", $per)) {{'checked'}} @endif>a determinar<br> --}}
 				</div>
 			</div>
@@ -70,20 +70,20 @@
 
 		<div class="row">
 			<div class="col-md-3">
-				<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#mant" data-parent="#accordion">Mantenimiento</button>
+				<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#mant" data-parent="#accordion">Mantenimiento</button>
 			</div>
 			<div class="col-md-3">
 				<div id="mant" class="collapse">
-					<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#empl" data-parent="#accordion">Empleados</button>
-					<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#rubro" data-parent="#accordion">Rubros</button>
-					<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#mate" data-parent="#accordion">Materiales</button>   
+					<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#empl" data-parent="#accordion">Empleados</button>
+					<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#rubro" data-parent="#accordion">Rubros</button>
+					<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#mate" data-parent="#accordion">Materiales</button>   
 				</div>
 			</div>
 			<div class="col-md-3">
 				<div id="empl" class="collapse">
-					<input type="checkbox" name="per[]" value="addEmpl" @if(in_array("addEmpl", $per)) {{'checked'}} @endif @if(in_array("delUSe", $per)) {{'checked'}} @endif>Agregar Empleados<br>
-					<input type="checkbox" name="per[]" value="ediEmpl" @if(in_array("ediEmpl", $per)) {{'checked'}} @endif @if(in_array("delUSe", $per)) {{'checked'}} @endif>Editar Empleados<br>
-					<input type="checkbox" name="per[]" value="delEmpl" @if(in_array("delEmpl", $per)) {{'checked'}} @endif @if(in_array("delUSe", $per)) {{'checked'}} @endif>Eliminar Empleados<br>
+					<input type="checkbox" name="per[]" value="addEmpl" @if(in_array("addEmpl", $per)) {{'checked'}} @endif>Agregar Empleados<br>
+					<input type="checkbox" name="per[]" value="ediEmpl" @if(in_array("ediEmpl", $per)) {{'checked'}} @endif>Editar Empleados<br>
+					<input type="checkbox" name="per[]" value="delEmpl" @if(in_array("delEmpl", $per)) {{'checked'}} @endif>Eliminar Empleados<br>
 				</div>
 				<br>
 				<div id="rubro" class="collapse">
@@ -102,12 +102,12 @@
 		</div>
 		<div class="row">
 			<div class="col-md-3">
-				<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#seguridad" data-parent="#accordion">Seguridad</button>
+				<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#seguridad" data-parent="#accordion">Seguridad</button>
 			</div>
 			<div class="col-md-3">
 				<div id="seguridad" class="collapse">
-					<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#usuario" data-parent="#accordion">Usuario</button>
-					<button type="button" class="btn btn-info btn-block" data-toggle="collapse" data-target="#roles" data-parent="#accordion">Roles</button>   
+					<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#usuario" data-parent="#accordion">Usuario</button>
+					<button type="button" class="btn button-primary btn-block" data-toggle="collapse" data-target="#roles" data-parent="#accordion">Roles</button>   
 				</div>
 			</div>
 			<div class="col-md-3">

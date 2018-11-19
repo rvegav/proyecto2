@@ -93,15 +93,17 @@
   </div>
 </div>
 </div>
-<script type="text/javascript">
-  $("#volver").click(function(){
-    $.ajax({
-      url: "{{url()->current()}}",
-      success: function(){
-        window.location.replace("{{url()->previous()}}");
-      }
+@push('scripts')
+  <script type="text/javascript">
+    $("#volver").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{url()->previous()}}");
+        }
+      })
     })
-  })
-</script>
-
-@stop
+  </script>
+  {{-- expr --}}
+@endpush
+@endsection

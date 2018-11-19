@@ -69,6 +69,14 @@
           <div class="col-md-2">
             <label for="" style="margin-top: 10px">Teléfono</label>
             <div class="form-group">
+<<<<<<< HEAD
+              <select class="form-control" id="rubro_id" name="rubro_id">
+
+                @foreach ($rubros as $rubro)
+                  <label for="seleccionado"> algo</label>
+                  <option value={{$rubro->id}} @if($empleado->rubro->id == $rubro->id) id="seleccionado" selected @endif>{{$rubro->nombre_rubro}}</option> 
+                @endforeach
+=======
               <input type="text" size="19"  name="telefono" class="form-control" value="{{ $empleado->telefono }}" placeholder="Teléfono">
             </div>
           </div>
@@ -83,6 +91,7 @@
                   @foreach ($rubros as $rubro)
                     <option value={{$rubro->id}}>{{$rubro->nombre_rubro}} </option>
                   @endforeach
+>>>>>>> 426628a6eec38e768fe13648b3740546a40194d0
               </select>
             </div>
           </div>

@@ -38,31 +38,34 @@
     </div>
   </div>
 </div>
-<script type="text/javascript">
-  $("#users").click(function(){
-    $.ajax({
-      url: "{{url()->current()}}",
-      success: function(){
-        window.location.replace("{{ route('users.create') }}");
+@push('scripts')
+  <script type="text/javascript">
+    $("#users").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{ route('users.create') }}");
+        }
+      })
+    });
+   $( ".card" ).hover(
+      function() {
+        $( this ).append( $( "<span> ***</span>" ) );
+      }, function() {
+        $( this ).find( "span:last" ).remove();
       }
-    })
-  });
- $( ".card" ).hover(
-    function() {
-      $( this ).append( $( "<span> ***</span>" ) );
-    }, function() {
-      $( this ).find( "span:last" ).remove();
-    }
-  );
-  $("#roles").click(function(){
-    $.ajax({
-      url: "{{url()->current()}}",
-      success: function(){
-        window.location.replace("{{ route('roles.create') }}");
-      }
-    })
-  });
-</script>
+    );
+    $("#roles").click(function(){
+      $.ajax({
+        url: "{{url()->current()}}",
+        success: function(){
+          window.location.replace("{{ route('roles.create') }}");
+        }
+      })
+    });
+  </script>
+  {{-- expr --}}
+@endpush
 
-@stop
+@endsection
 

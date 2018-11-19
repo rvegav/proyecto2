@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class RubrosController extends Controller
 {
-    function __construc()
+    function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth', 'roles:rubrMant']); 
     }
     /**
      * Display a listing of the resource.

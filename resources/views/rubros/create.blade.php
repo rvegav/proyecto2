@@ -67,14 +67,17 @@
 		</div>
 	</div>
 
-<script type="text/javascript">
-  $("#volver").click(function(){
-    $.ajax({
-      url: "{{url()->current()}}",
-      success: function(){
-        window.location.replace("{{url()->previous()}}");
-      }
-    })
-  })
-</script>
-@stop
+@push('scripts')
+	<script type="text/javascript">
+	  $("#volver").click(function(){
+	    $.ajax({
+	      url: "{{url()->current()}}",
+	      success: function(){
+	        window.location.replace("{{url()->previous()}}");
+	      }
+	    })
+	  })
+	</script>
+	{{-- expr --}}
+@endpush
+@endsection
