@@ -19,4 +19,8 @@ class Obra extends Model
 	public function documentos(){
         return $this->hasMany(Documento::Class);
     }
+
+    public function inventario(){
+        return $this->hasMany(Inventario::Class);
+    }
 }
