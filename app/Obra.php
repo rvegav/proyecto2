@@ -19,9 +19,11 @@ class Obra extends Model
 	public function documentos(){
         return $this->hasMany(Documento::Class);
     }
-    public function pedidos(){
-        return $this->hasMany(Pedido::Class);
+
+    public function inventario(){
+        return $this->hasMany(Inventario::Class);
     }
+<<<<<<< HEAD
 
     public function compra(){
         return $this->hasMany(OrdenCompra::Class);
@@ -29,4 +31,6 @@ class Obra extends Model
     public function inventario(){
         return $this->hasMany(Inventario::Class);
     }
+=======
+>>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
 }

@@ -6,23 +6,24 @@
 		<div class="panel panel-default">
 			<div class="panel-body">
 				<h2>ALMACEN DE OBRA</h2>
-				<h3>{{$obra->nombre_proyecto}}</h3>
-				<div id="message"></div>
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-3">
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#pedido">Realizar Pedido</button>
+<<<<<<< HEAD
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#gestion">Gestion Pedido</button>
 						<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#remision">Recibir Pedido</button>
 
+=======
+>>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
 					</div>
 				</div>
 				<div class="row">
-
 					<table class="table table-responsive">
 						<thead>
 							<tr>
 								<th>Cod. Material</th>
 								<th>Descripcion</th>
+<<<<<<< HEAD
 								<th>Tipo</th>	
 								<th>Cantidad Minima</th>
 								<th>Cantidad Actual</th>
@@ -38,6 +39,21 @@
 	        						<td>{{$i->cantidad_actual}}</td>
 	        					</tr>
 	        				@endforeach
+=======
+								<th>Tipo</th>
+								<th>Cantidad Minima</th>
+								<th>Cantidad</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Cemento Porland</td>
+								<td>--</td>
+								<td>30</td>
+								<td>120</td>
+							</tr>
+>>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
 						</tbody>
 					</table>
 				</div>
@@ -58,6 +74,7 @@
 			</div>
 			<div class="modal-body">
 				<div class="panel panel-default">
+<<<<<<< HEAD
 					<div class="panel-body">
 						<div class="col-md-12">
 							<form method="POST" action="{{ route('almacen.store') }}">
@@ -113,17 +130,12 @@
 </div>
 <div id="gestion" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-lg">
+=======
+>>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
 
-		<!-- Modal content-->
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Gestion de Pedido</h4>
-			</div>
-			<div class="modal-body">
-				<div class="panel panel-default">
 					<div class="panel-body">
 						<div class="col-md-12">
+<<<<<<< HEAD
 							<div id="editPedido">
 								<form method="POST" action="#">
 									<div class="row">
@@ -187,26 +199,54 @@
 											</tbody>
 										</table>
 									</div>
+=======
+							<div class="row">
+								<label for="mate">Descripcion</label>
+								<input type="text" id="mate" name="mate" placeholder="Material Requerido">
+								{{-- <label for="" style="margin-top: 10px">Material</label>
+               					<div class="form-group">
+					                <select class="form-control" id="mate_id" name="mate_id">
+					                    @foreach ($materiales as $material) {
+					                    	<option id="mate" value={{$material->id}}>{{$material->m_descripcion}}</option> 
+					                    @endforeach
+					                </select>
+                				</div> --}}
+								<label for="cant">Cantidad</label>
+								<input type="text" onkeyup="format(this)" id="cant" name="cant" placeholder="Cantidad Requerida">								
+							</div>
+							<div class="row">
+								<div class="table-responsive" >
+									<table class="table" id="materiales" >
+										<thead>
+											<tr>
+												<th>Material</th>
+												<th>Cantidad</th>
+												<th>Accion</th>
+											</tr>
+										</thead>
+										<tbody>
+										</tbody>
+										<tfoot>
+											<tr>
+
+												<th id="cant_total">Total Articulos: 0 </th>
+
+											</tr>
+										</tfoot>
+									</table>
+>>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
 								</div>
 
-								</div>
-								<div id="egreso">
-									<hr>
-									<h3>Orden de Egreso</h3>
-
-									<div class="col-md-10 col-md-offset-1" >
-
-									</div>
-								</div>
-							</div>    
+								
+							</div>
 						</div>
 
 					</div>
-					<input type="hidden"class="form-control" id="obra_id" name="obra_id" value={{$obra->id}}>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				</div>
 			</div>
 			<div class="modal-footer">
+				<button type="button" class="btn btn-default">Enviar Aprobacion</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 
@@ -274,8 +314,8 @@
 @push('scripts')
 <script type="text/javascript">
 	var counter = 1;
-	var materialesAux =[];
-	var i = 0;
+	var materiales = [];
+	var cantMateriales =0;
 	var t = $('#materiales').DataTable( {
 		"paging":   false,
 		"ordering": false,
@@ -285,12 +325,12 @@
 			"sEmptyTable": "No se agregó ningun Material"
 		}
 	} );
-	var pedido = $("#tablaPedido").DataTable();
 	document.getElementById("cant").onkeypress = function() {myFunction(event, t, counter )};
 	$('#materiales tbody').on('click', '#eliminar', function(){
 		t.row($(this).parents('tr')).remove().draw(false);
 		$("#cant_total").html('<th>Total Articulos: '+t.data().length+'</th>');
 	});
+<<<<<<< HEAD
 	$.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -325,13 +365,20 @@
 		})	
 	})
 	
+=======
+
+>>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
 	function myFunction(e, t, counter) {
 		var cant = $('#cant').val();
 		var mate = $('#mate').val();
+		var id_mate = $('#id_mate').val();
 		var button = '<button type="button" id="eliminar" name"eliminar" class="btn btn-primary"><i class="fa fa-trash"></i></button>';
 		if(!isNaN(cant)){
+			cant = cant.toString().split('').reverse().join('').replace(/(?=\d*\.?)(\d{3})/g,'$1.');
+			cant = cant.split('').reverse().join('').replace(/^[\.]/,'');
+			$('#cant').value = cant;
 			if (e.which == 13) {
-				e.preventDefault();
+				// materiales.push(mate);
 				t.row.add( [
 					mate,
 					cant, button
@@ -341,11 +388,14 @@
 				$('#cant').val("");
 				$('#id_mate').val("");
 				$('#mate').focus();
+				// console.log(t.rows().data()[1]);
+				// console.log(mater);
 			}
 		}else{
 			alert('Debe ser en numeros');
 		}
 	};
+<<<<<<< HEAD
 	$('#enviar').click(function(){
 		var id = $('#obra_id').val();
 		var materiales = [];
@@ -379,6 +429,8 @@
 			alert('ocurrio un error interno, contacte con Rolo');
 		})
 	});
+=======
+>>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
 	function format(input){
 		var num = input.value.replace(/\./g,'');
 		if(!isNaN(num)){
@@ -386,9 +438,11 @@
 			num = num.split('').reverse().join('').replace(/^[\.]/,'');
 			input.value = num;
 		}
-		else{ alert('Solo se permiten numeros');
-		input.value = input.value.replace(/[^\d\.]*/g,'');
+ 		else{ alert('Solo se permiten numeros');
+			input.value = input.value.replace(/[^\d\.]*/g,'');
+		}
 	}
+<<<<<<< HEAD
 }
 $("#editPedido").hide();
 $('#tablaPedido tbody').on('click', '#editarPedido', function(){
@@ -435,9 +489,11 @@ $("#aceptarPedido").on('click', function(){
 $("#cancelar").on('click', function(){
 	$("#editPedido").hide();
 });
+=======
+>>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
 
-</script>
-@endpush
-@endsection
+	</script>
+	@endpush
+	@endsection
 
 
