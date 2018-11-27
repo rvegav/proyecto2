@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class RubrosController extends Controller
 {
-    function __construct()
+    function __construc()
     {
         $this->middleware(['auth', 'roles:rubrMant']); 
     }

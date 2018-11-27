@@ -53,11 +53,14 @@ Route::post('empleadosObras/{id}', ['as' => 'empleadosObras', 'uses'=>'Empleados
 Route::get('desvincular/{obra}/{id}', ['as' => 'desvincular', 'uses'=>'ObrasController@desvincular']);
 
 // Route::get('almacen', '';
+<<<<<<< HEAD
 
 Route::resource('almacen', 'AlmacenController');
 Route::post('updatePedido', ['as'=>'updatePedido' , 'uses' =>  'AlmacenController@updatePedido']);
 Route::post('almacenMateriales', ['as'=>'almacenMateriales', 'uses' => 'searchController@getMateriales']);
 
+=======
+>>>>>>> remotes/origin/master
 
 //REST Almacenes
 Route::resource('almacenGeneral', 'AlmacenGeneralController');
@@ -71,7 +74,10 @@ Route::resource('almacenGeneral', 'AlmacenGeneralController');
 
 //MaterialeObras
  Route::post('materialesObras/{id}', ['as' => 'materialesObras', 'uses'=>'AlmacenGeneralController@asignarMaterialObra']);
+<<<<<<< HEAD
 
+=======
+>>>>>>> remotes/origin/master
 
 
 //REST Facturas
