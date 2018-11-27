@@ -2,29 +2,29 @@
 
 @section('contenido')
 
-	<form method="POST" action="{{route('rubros.store')}}">
+	<form method="POST" action="{{route('profesiones.store')}}">
 		{!! csrf_field() !!}
 		<div class="container">
 			<div class="row">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<h1>Rubros</h1>
+						<h1>Profesiones</h1>
 					</div>
 					<div class="panel-body">
 						<div class="row">
 							<div class="col-md-2 col-md-offset-3">
-								<label for="">Rubro</label>
-								<input type="text" class="form-control{{ $errors->has('nombre_rubro') ? ' is-invalid' : '' }}" name="nombre_rubro" value="" placeholder="Nombre del rubro" required>
-                  					@if ($errors->has('nombre_rubro'))
+								<label for="">Profesión</label>
+								<input type="text" class="form-control{{ $errors->has('nombre') ? ' is-invalid' : '' }}" name="nombre" value="" placeholder="Profesión" required>
+                  					@if ($errors->has('nombre'))
                     					<span class="invalid-feedback errors" role="alert">
-                      					<strong>{{ $errors->first('nombre_rubro') }}</strong>
+                      					<strong>{{ $errors->first('nombre') }}</strong>
                     					</span>
                   					@endif
 							</div>
 							
 							<div class="col-md-3">
-								<label for="">Detalle</label>
-								<input type="text" class="form-control" name="detalle_rubro" value="" placeholder="Detalle del rubro">
+								<label for="">Descripción</label>
+								<input type="text" class="form-control" name="detalle" value="" placeholder="Descripción">
 							</div>
 						</div>
 			</div>
@@ -32,7 +32,7 @@
 			<div class="row">
                 <div class="col-md-4 col-md-offset-4" style="margin-top: 10px">
                   <button type="submit" class="btn button-primary">Guardar</button>
-                  <a class="btn button-primary" href="{{ route('rubros.create') }}">Cancelar</a>
+                  <a class="btn button-primary" href="{{ route('profesiones.create') }}">Cancelar</a>
                   <button type="button" class="btn button-primary" id="volver" name="button">Volver</button>
                 </div>
             </div>
@@ -41,26 +41,27 @@
 			<table class="table table-responsive">
 				<thead>
 					<tr>
-						<th>Rubro</th>
-						<th>Detalle</th>
+						<th>Profesión</th>
+						<th>Descripción</th>
 						<th>Acción</th>
 					</tr>
 				</thead>
 				<tbody>
-					@foreach($rubros as $rubro)
-
+					@foreach($profesiones as $profesion)
+						@if($profesion->estado == 1)
 					<tr>
-						<td>{{ $rubro->nombre_rubro }}</td>
-						<td>{{ $rubro->detalle_rubro }}</td>
+						<td>{{ $profesion->nombre }}</td>
+						<td>{{ $profesion->detalle }}</td>
 						<td>
-							<a  class="btn btn-link" href="{{ route('rubros.edit', $rubro->id) }}" >Editar</a>	
-							<form style="display: inline" method="POST" action="{{ route('rubros.destroy', $rubro->id) }}">
+							<a  class="btn btn-link" href="{{ route('profesiones.edit', $profesion->id) }}" >Editar</a>	
+							<form style="display: inline" method="POST" action="{{ route('profesiones.destroy', $profesion->id) }}">
 					          {!! csrf_field() !!}
 					          {!! method_field('DELETE') !!}
 					          <button class="btn button-primary" type="submit">Eliminar</button>
 					        </form>
 						</td>
 					</tr>
+					@endif
 					@endforeach
 				</tbody>
 			</table>      

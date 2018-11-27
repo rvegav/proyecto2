@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TipoDocumento;
+use App\Http\Requests\TiposDocumentosRequest;
 
-class RubrosController extends Controller
+
+class TiposDocumentosController extends Controller
 {
-     function __construct()
+    function __construct()
     {
-        // 
+        $this->middleware('auth'); 
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -17,7 +21,7 @@ class RubrosController extends Controller
      */
     public function index()
     {
-        // 
+        //
     }
 
     /**
@@ -27,7 +31,10 @@ class RubrosController extends Controller
      */
     public function create()
     {
-        //
+        $tipos_documentos = TipoDocumento::all();
+        // dd($tipos_documentos->all());
+
+        return view('tipos_documentos.create', compact('tipos_documentos'));
     }
 
     /**
@@ -38,7 +45,8 @@ class RubrosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        TipoDocumento::create($request->all());
+        return redirect()->route('tipos_documentos.create');
     }
 
     /**
@@ -60,7 +68,8 @@ class RubrosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $tipos_documentos =  TipoDocumento::findOrFail($id);
+        return view('tipos_documentos.edit', compact('tipos_documentos'));
     }
 
     /**
@@ -70,9 +79,12 @@ class RubrosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(TiposDocumentosRequest $request, $id)
     {
-        //
+        $tipos_documentos = TipoDocumento::findOrFail($id);
+        $tipos_documentos->update($request->all());
+
+        return redirect()->route('tipos_documentos.create');
     }
 
     /**
@@ -83,6 +95,10 @@ class RubrosController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $tipos_documentos = TipoDocumento::findOrFail($id);
+        
+        $tipos_documentos->delete();
+
+        return redirect()->route('tipos_documentos.create');
     }
 }

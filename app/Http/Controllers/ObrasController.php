@@ -16,8 +16,12 @@ class ObrasController extends Controller
      */
     public function index()
     {
-        $this->middleware(['auth', 'roles:obras']);     
         //      
+    }
+
+    function __construct()
+    {
+        $this->middleware(['auth', 'roles:obras']); 
     }
 
     /**
@@ -28,6 +32,7 @@ class ObrasController extends Controller
     public function create()
     {
         $obras = Obra::all();
+        // dd($obras);
         $clientes = Cliente::all();
         
         return view('obras.create', compact('obras','clientes'));
