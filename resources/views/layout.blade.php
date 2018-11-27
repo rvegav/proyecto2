@@ -39,7 +39,7 @@
             @endif
             @if (auth()->user()->hasPermission(['storage']))
             <li>
-              <a href="{{ route('storages.create') }}"><i class="fa fa-industry fa-2x"></i> Almacen</a>
+              {{-- <a href="{{ route('storages.create') }}"><i class="fa fa-industry fa-2x"></i> Almacen</a> --}}
             </li>
             
             @endif

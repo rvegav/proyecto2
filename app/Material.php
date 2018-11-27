@@ -13,7 +13,6 @@ class Material extends Model
 	{
 		return $this->belongsToMany(Obra::class, 'assigned_materiales')->withPivot('cantidad_inicial','cantidad_disponible');
 	}
-
     public function hasObras(array $obras)
 	{
 		foreach ($obras as $obra) 
