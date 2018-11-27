@@ -29,7 +29,14 @@ Route::resource('documentos', 'DocumentosController');
 Route::resource('obras', 'ObrasController');
 
 //REST Rubros
-Route::resource('rubros', 'RubrosController');
+Route::resource('rubros', 'FamiliaRubrosController');
+Route::post('storeFliaRubros', 'FamiliaRubrosController@storeFliaRubros');
+// Route::get('addRubros/{id}', 'FamiliaRubrosController@addRubros');
+// Route::get('addRubros/{id}', ['as' => 'addRubros', 'uses'=>'FamiliaRubrosController@addRubros']);
+
+
+//REST Profesiones
+Route::resource('profesiones', 'ProfesionesController');
 
 //REST Materiales
 Route::resource('materiales', 'MaterialesController');
@@ -44,7 +51,7 @@ Route::resource('herramientas', 'HerramientasController');
 Route::resource('clientes', 'ClientesController');
 
 //REST Almacenes
-// Route::resource('storages', 'StoragesController');
+Route::resource('storages', 'StoragesController');
 
 //EmpleadosObras
 Route::post('empleadosObras/{id}', ['as' => 'empleadosObras', 'uses'=>'EmpleadosObrasController@asignarEmpleadoObra']);
@@ -55,6 +62,7 @@ Route::get('desvincular/{obra}/{id}', ['as' => 'desvincular', 'uses'=>'ObrasCont
 // Route::get('almacen', '';
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 Route::resource('almacen', 'AlmacenController');
 Route::post('updatePedido', ['as'=>'updatePedido' , 'uses' =>  'AlmacenController@updatePedido']);
@@ -62,6 +70,11 @@ Route::post('almacenMateriales', ['as'=>'almacenMateriales', 'uses' => 'searchCo
 
 =======
 >>>>>>> remotes/origin/master
+=======
+
+Route::resource('almacen', 'AlmacenController');
+Route::post('almacenMateriales' , ['as'=> 'almacenMateriales', 'uses' => 'AlmacenController@getMateriales']);
+>>>>>>> 02f58b56fb1bee2f0dbe21ca237daa1a9d237e90
 =======
 >>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
 
@@ -75,7 +88,7 @@ Route::resource('almacenGeneral', 'AlmacenGeneralController');
 //MaquinariasObras
  Route::post('maquinariasObras/{id}', ['as' => 'maquinariasObras', 'uses'=>'AlmacenGeneralController@asignarMaquinariaObra']);
 
-//MaterialeObras
+//MaterialesObras
  Route::post('materialesObras/{id}', ['as' => 'materialesObras', 'uses'=>'AlmacenGeneralController@asignarMaterialObra']);
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -87,4 +100,7 @@ Route::resource('almacenGeneral', 'AlmacenGeneralController');
 
 
 //REST Facturas
-//Route::resource('facturasGestion', 'FacturasGestionController');
+// Route::resource('facturasGestion', 'FacturasGestionController');
+
+//REST Tipos de documentos
+Route::resource('tipos_documentos', 'TiposDocumentosController');

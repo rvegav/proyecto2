@@ -22,8 +22,16 @@ class ObrasController extends Controller
     }
     public function index()
     {
+<<<<<<< HEAD
              
+=======
+>>>>>>> 02f58b56fb1bee2f0dbe21ca237daa1a9d237e90
         //      
+    }
+
+    function __construct()
+    {
+        $this->middleware(['auth', 'roles:obras']); 
     }
 
     /**
@@ -34,6 +42,7 @@ class ObrasController extends Controller
     public function create()
     {
         $obras = Obra::all();
+        // dd($obras);
         $clientes = Cliente::all();
         
         return view('obras.create', compact('obras','clientes'));

@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class RubrosController extends Controller
+use App\Profesion;
+
+class ProfesionesController extends Controller
 {
-<<<<<<< HEAD
      function __construct()
-=======
-    function __construc()
->>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
     {
-        // 
+        //$this->middleware(['auth', 'roles:rubrMant']); 
     }
     /**
      * Display a listing of the resource.
@@ -21,7 +19,7 @@ class RubrosController extends Controller
      */
     public function index()
     {
-        // 
+        //
     }
 
     /**
@@ -32,6 +30,9 @@ class RubrosController extends Controller
     public function create()
     {
         //
+        $profesiones = Profesion::where('estado', '1')->get();
+        //dd($rubros);
+        return view('profesiones.create', compact('profesiones'));
     }
 
     /**
@@ -42,51 +43,65 @@ class RubrosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request->all());
+        Profesion::create($request->all());
+        return redirect()->route('profesiones.create');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Rubro  $rubro
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Profesion $rubro)
     {
         //
+
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Rubro  $rubro
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         //
+        $profesiones =  Profesion::findOrFail($id);
+        return view('profesiones.edit', compact('profesiones'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Rubro  $rubro
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
         //
+        $profesiones = Profesion::findOrFail($id);
+        $profesiones->update($request->all());
+
+        return redirect()->route('profesiones.create');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Rubro  $rubro
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        //
+     
+        $profesion = Profesion::findOrFail($id);
+        
+        $profesion->update([ $profesion->estado = 0 ]);
+
+        return redirect()->route('profesiones.create');
     }
 }

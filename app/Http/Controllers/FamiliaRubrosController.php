@@ -3,17 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\FamiliaRubro;
 
-class RubrosController extends Controller
+class FamiliaRubrosController extends Controller
 {
-<<<<<<< HEAD
-     function __construct()
-=======
-    function __construc()
->>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
-    {
-        // 
-    }
     /**
      * Display a listing of the resource.
      *
@@ -21,7 +14,8 @@ class RubrosController extends Controller
      */
     public function index()
     {
-        // 
+        $fliaRubros = FamiliaRubro::all();
+        return view('rubros.index', compact('fliaRubros'));
     }
 
     /**
@@ -31,7 +25,7 @@ class RubrosController extends Controller
      */
     public function create()
     {
-        //
+        return view('rubros.create');
     }
 
     /**
@@ -64,7 +58,9 @@ class RubrosController extends Controller
      */
     public function edit($id)
     {
-        //
+        $fliaRubros = FamiliaRubro::findOrFail($id);
+
+        return view('rubros.edit', compact('fliaRubros'));
     }
 
     /**
@@ -89,4 +85,12 @@ class RubrosController extends Controller
     {
         //
     }
+
+    public function storeFliaRubros(Request $request)
+    {
+        FamiliaRubro::create($request->all());
+
+        return redirect()->route('rubros.index'); 
+    }
+
 }
