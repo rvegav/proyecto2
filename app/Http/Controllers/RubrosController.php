@@ -6,7 +6,11 @@ use Illuminate\Http\Request;
 
 class RubrosController extends Controller
 {
+<<<<<<< HEAD
      function __construct()
+=======
+    function __construc()
+>>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
     {
         // 
     }

@@ -14,7 +14,7 @@ class UsersController extends Controller
     {
         //el primer middleware es para que solo se pueda ingresar a la vista de users si esta autenticado
         // el segundo es para que solo el rol admin tenga acceso a Administrar Usuario
-        $this->middleware(['auth', 'roles:usr']); 
+        // $this->middleware(['auth', 'roles:usr']); 
     }
 
 
@@ -49,10 +49,8 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-    //      $this->validate($request, [
-    //         // 'email' => 'required|string|email',
-    //         'password' => 'min:6',
-    // ]);
+        // dd($request->all());
+        // primero guardar
 
         $user = new User;
         $user->name = $request->input('nombre');
@@ -63,6 +61,7 @@ class UsersController extends Controller
         // $user->setRememberToken(Str::random(60));
         $user->save();
 
+        //luego redireccionar
        return redirect()->route('users.create');
     }
 
@@ -74,7 +73,8 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        // $user = User::findOrFail($id);
+        // return $user   return view('user.show', compact('user'));
     }
 
     /**
