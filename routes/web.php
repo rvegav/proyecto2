@@ -60,12 +60,9 @@ Route::post('empleadosObras/{id}', ['as' => 'empleadosObras', 'uses'=>'Empleados
 Route::get('desvincular/{obra}/{id}', ['as' => 'desvincular', 'uses'=>'ObrasController@desvincular']);
 
 // Route::get('almacen', '';
-<<<<<<< HEAD
 
 Route::resource('almacen', 'AlmacenController');
 Route::post('almacenMateriales' , ['as'=> 'almacenMateriales', 'uses' => 'AlmacenController@getMateriales']);
-=======
->>>>>>> 12bf9022b901a4cbc29d6de78d1ade0d9f735312
 
 //REST Almacenes
 Route::resource('almacenGeneral', 'AlmacenGeneralController');
